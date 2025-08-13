@@ -1,0 +1,111 @@
+{
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(date:*)",
+      "Bash(git:diff*)",
+      "Bash(git:log*)",
+      "Bash(git:status*)",
+      "Bash(git log --grep:*)",
+      "Bash(make:*)",
+      "Bash(source:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:ycombinator.com)",
+      "WebSearch(*)",
+      "Write(results/**)",
+      "Edit(results/**)",
+      "Read(results/**)"
+    ],
+    "deny": [
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rg:*)",
+      "Bash(rm:*)",
+      "Bash(tail:*)",
+      "Bash(touch:*)",
+      "Bash(tree:*)",
+      "Edit(.claude/**)",
+      "Edit(AGENTS.md)",
+      "Edit(CLAUDE.md)",
+      "Edit(README.md)",
+      "Write(.claude/**)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🚀 AI Startup Market Research Pipeline Ready'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚡ Starting sub-agent execution: $(date)'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '📄 File generated successfully'"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '✅ Sub-agent completed. Files in results/'"
+          },
+          {
+            "type": "command",
+            "command": "echo 'Check results/ for generated reports'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🎯 Market research pipeline complete!'"
+          },
+          {
+            "type": "command",
+            "command": "echo '📁 All outputs saved to results/research/ and results/gtm/'"
+          }
+        ]
+      }
+    ]
+  }
+}
