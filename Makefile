@@ -14,12 +14,12 @@ research:  ## Market Research Analysis (Phase 1)
 	echo "Market Research completed."
 
 gtm:  ## Go-to-Market Strategy (Phase 2)
-	@echo "Starting Go-to-Market Strategy Development..."
+	echo "Starting Go-to-Market Strategy Development..."
 	claude task --agent general-purpose --file .claude/agents/gtm_strategy.md
-	@echo "Go-to-Market Strategy completed."
+	echo "Go-to-Market Strategy completed."
 
 create_struct:  ## Setup directory structure
-	@echo "Creating directory structure..."
+	echo "Creating directory structure..."
 	mkdir -p results/research results/gtm
 
 clean_struct:  ## Clean directory structure
