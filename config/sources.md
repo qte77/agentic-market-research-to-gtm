@@ -3,11 +3,12 @@
 ## Primary Project
 
 - [>>> company name here <<<](https://company.url)
-  - AI platform focused on "Turning gaming into growing"
-  - Multi-technology stack (JavaScript, Python, CSS)
-  - Repositories: platform, homepage, backend, docs
-  - Mature-stage development with resilience positioning
+  - Additional information for this source #1
+  - Additional information for this source #N
 
-## Additional Projects (Future Analysis)
+## Additional Projects
 
 <!-- Add additional projects to be analyzed and aligned -->
+
+- [NewCo AI](https://github.com/newco-ai)
+  - Description of project and focus areas
