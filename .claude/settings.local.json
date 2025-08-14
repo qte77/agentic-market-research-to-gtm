@@ -12,7 +12,7 @@
       "Bash(git log --grep:*)",
       "Bash(make:*)",
       "Bash(source:*)",
-            "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
       "Write(results/**)",
       "Edit(results/**)",
