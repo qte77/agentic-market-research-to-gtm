@@ -30,7 +30,7 @@ Based on the previous subtasks findings, identify optimal market positioning opp
 
 ### Subtask 5: Executive summary
 
-Based on the previous subtasks provide a concise executive summary containing max. 10 sentences and 10 bullet points. Focus an the most promising results and actionable items.but mention the less promissing ones.
+Based on the previous subtasks provide a concise executive summary containing max. 10 sentences and max. 10 bullet points. Focus an the most promising results and actionable items.but mention the less promissing ones.
 
 ## Expected Deliverables Per Subtask
 
