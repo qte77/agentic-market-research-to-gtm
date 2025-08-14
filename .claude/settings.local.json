@@ -12,9 +12,8 @@
       "Bash(git log --grep:*)",
       "Bash(make:*)",
       "Bash(source:*)",
-      "WebFetch(domain:docs.anthropic.com)",
+            "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
-      "WebSearch(*)",
       "Write(results/**)",
       "Edit(results/**)",
       "Read(results/**)"
@@ -49,6 +48,10 @@
         "hooks": [
           {
             "type": "command",
+            "command": "mkdir -p results/research results/gtm results/archive/$(date +%Y-%m-%d) && echo '📁 Directory structure created'"
+          },
+          {
+            "type": "command",
             "command": "echo '🚀 AI Startup Market Research Pipeline Ready'"
           }
         ]
@@ -63,15 +66,37 @@
             "command": "echo '⚡ Starting sub-agent execution: $(date)'"
           }
         ]
+      },
+      {
+        "matcher": "Write(results/**)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE_PATH=$(echo '$TOOL_INPUT' | jq -r '.file_path' 2>/dev/null || echo 'unknown'); if [ -f \"$FILE_PATH\" ] && [ \"$FILE_PATH\" != \"unknown\" ]; then BACKUP_DIR=\"results/archive/$(date +%Y-%m-%d)\"; mkdir -p \"$BACKUP_DIR\" && cp \"$FILE_PATH\" \"$BACKUP_DIR/$(basename \"$FILE_PATH\").$(date +%H%M%S).bak\" && echo '💾 Backup created for $(basename \"$FILE_PATH\")'; fi"
+          }
+        ]
       }
     ],
     "PostToolUse": [
       {
-        "matcher": "Write",
+        "matcher": "Write(results/**)",
         "hooks": [
           {
             "type": "command",
-            "command": "echo '📄 File generated successfully'"
+            "command": "FILE_PATH=$(echo '$TOOL_INPUT' | jq -r '.file_path' 2>/dev/null || echo 'unknown'); if [ \"$FILE_PATH\" != \"unknown\" ]; then echo '📄 $(basename \"$FILE_PATH\") generated successfully'; fi"
+          },
+          {
+            "type": "command",
+            "command": "RESEARCH_COUNT=$(find results/research -name '*.md' 2>/dev/null | wc -l); GTM_COUNT=$(find results/gtm -name '*.md' 2>/dev/null | wc -l); echo \"📊 Progress: Research($RESEARCH_COUNT/5) GTM($GTM_COUNT/5)\""
+          }
+        ]
+      },
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"$(date '+%H:%M:%S') - Sub-agent phase completed\" >> results/pipeline_progress.log"
           }
         ]
       }
@@ -82,11 +107,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '✅ Sub-agent completed. Files in results/'"
+            "command": "TOTAL_FILES=$(find results -name '*.md' 2>/dev/null | wc -l); echo \"✅ Sub-agent completed. Total reports: $TOTAL_FILES\""
           },
           {
             "type": "command",
-            "command": "echo 'Check results/ for generated reports'"
+            "command": "ls -la results/ 2>/dev/null | grep -E '(research|gtm)' | awk '{print \"📁 \" $9 \": \" $5 \" bytes\"}' || echo '📁 Check results/ for generated reports'"
           }
         ]
       }
@@ -97,11 +122,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '🎯 Market research pipeline complete!'"
+            "command": "FINAL_COUNT=$(find results -name '*.md' 2>/dev/null | wc -l); echo \"🎯 Pipeline complete! Generated $FINAL_COUNT strategic documents\""
           },
           {
             "type": "command",
-            "command": "echo '📁 All outputs saved to results/research/ and results/gtm/'"
+            "command": "TOTAL_SIZE=$(du -sh results/ 2>/dev/null | cut -f1); echo \"📁 Total output: $TOTAL_SIZE in results/\""
           }
         ]
       }

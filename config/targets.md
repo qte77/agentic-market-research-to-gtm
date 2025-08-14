@@ -1,10 +1,16 @@
 # Alignment Targets - Organizations/Markets to Align With
 
-## Primary Targets
+## Y Combinator
 
-- [Accelerator Program](https://accelerator.com)
-  - Program requirements and portfolio analysis
-  - Auxiliary information
+- [RFS (Request for Startups)](https://ycombinator.com/rfs)
+  - Priority investment areas and market opportunities
+  - Technology trends and investment thesis patterns
+  - Focus areas aligned with AI platform capabilities
+
+- [Portfolio Companies](https://www.ycombinator.com/companies)
+  - Successful startup positioning strategies
+  - Market approaches and scaling patterns
+  - AI, security, and enterprise software categories
 
 ## Additional Targets (Future Analysis)
 

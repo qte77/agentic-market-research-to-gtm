@@ -3,7 +3,7 @@
 
 > Stop Guessing. Start Dominating. - Automated market intelligence for AI startups that refuse to fail.
 
-> Go Vertical. Not Ballistic. - Market research and go-to-market strategy development framework for aligning AI startups with investor and market opportunities. >
+> Go Vertical. Not Ballistic. - Market research and go-to-market strategy development framework for aligning AI startups with investor and market opportunities.
 
 ## Purpose
 
@@ -17,6 +17,8 @@ Before running the pipeline, configure your research targets:
 
 1. **Edit `config/sources.md`** - Add projects/companies to be analyzed and aligned
 2. **Edit `config/targets.md`** - Add organizations/markets to align with
+3. **Edit `config/comments_research.md`** - Add auxiliary comments, e.g., constraints and focus areas for market research
+4. **Edit `config/comments_gtm.md`** - Add auxiliary comments, e.g., specific guidance for go-to-market strategy
 
 ### Execution Methods
 
@@ -98,7 +100,9 @@ See `AGENTS.md` for detailed orchestration instructions.
 ```bash
 config/                  # Configuration files
 ├── sources.md          # Projects to be aligned
-└── targets.md          # Organizations/markets to align with
+├── targets.md          # Organizations/markets to align with
+├── comments_research.md # Research constraints and focus areas
+└── comments_gtm.md     # GTM strategy guidance
 .claude/agents/          # Sub-agent instructions
 results/research/        # Market research outputs
 results/gtm/             # Go-to-market strategy

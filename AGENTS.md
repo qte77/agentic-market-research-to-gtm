@@ -33,6 +33,7 @@ The pipeline includes automated hooks for enhanced workflow:
 
 After completing both research and GTM phases, automatically generate execution summary in `results/pipeline_execution_summary.md` containing:
 
+- Date, time and duration of pipeline run
 - Complete pipeline status and deliverables overview
 - Key strategic insights and alignment target analysis
 - Implementation roadmap and next steps
