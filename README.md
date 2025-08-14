@@ -1,6 +1,9 @@
+<!-- markdownlint-disable MD028 no-blanks-blockquote -->
 # AI Startup Market Research Framework
 
-Stop Guessing. Start Dominating. - Automated market intelligence for AI startups that refuse to fail. Research and go-to-market strategy development framework for aligning AI startups with investor and market opportunities.
+> Stop Guessing. Start Dominating. - Automated market intelligence for AI startups that refuse to fail.
+
+> Go Vertical. Not Ballistic. - Market research and go-to-market strategy development framework for aligning AI startups with investor and market opportunities. >
 
 ## Purpose
 
@@ -17,36 +20,25 @@ Before running the pipeline, configure your research targets:
 
 ### Execution Methods
 
-### Method 1: Automated Pipeline (Recommended)
-
-Reference the orchestration file inside Claude Code CLI to trigger automatic execution:
+**Automated Pipeline (Recommended)**:
 
 ```bash
+# Reference orchestration file in Claude Code CLI
 Please execute the market research pipeline as defined in @AGENTS.md
 ```
 
-This automatically runs both sub-agents in sequence with full automation.
-
-### Method 2: Make-based Execution
-
-Execute the complete pipeline with automatic sequencing:
+**Make-based Execution**:
 
 ```bash
-make all       # Run complete pipeline (research → gtm)
-make research  # Run only market research phase
-make gtm       # Run only go-to-market (requires research)
-make clean     # Clean all outputs
+make all       # Complete pipeline
+make research  # Market research only
+make gtm       # Go-to-market strategy only
 ```
 
-### Method 3: Manual Sub-Agent Execution
-
-Execute individual research phases through Claude Code sub-agents:
+**Manual Execution**:
 
 ```bash
-# 1. Market Research Analysis
 claude task --agent general-purpose --file .claude/agents/market_research.md
-
-# 2. Go-to-Market Strategy Development  
 claude task --agent general-purpose --file .claude/agents/gtm_strategy.md
 ```
 
@@ -58,18 +50,21 @@ claude task --agent general-purpose --file .claude/agents/gtm_strategy.md
 
 ### Configuration Examples
 
-**Adding New Source Project** (`config/sources.md`):
+**Adding New Source Projects** (`config/sources.md`):
 
 ```markdown
-## Additional Projects
-- **NewCo AI**: https://github.com/newco-ai
-  - Description of project and focus areas
+## Primary Project
+
+- [>>> company name here <<<](https://company.url)
+  - Additional information for this source #1
+  - Additional information for this source #N
 ```
 
 **Adding New Alignment Target** (`config/targets.md`):
 
 ```markdown
-## Additional Targets
+## Primary Targets
+
 - **Accelerator Program**: https://accelerator.com
   - Program requirements and portfolio analysis
 ```

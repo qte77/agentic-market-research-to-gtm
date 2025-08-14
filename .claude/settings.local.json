@@ -14,7 +14,6 @@
       "Bash(source:*)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:ycombinator.com)",
       "WebSearch(*)",
       "Write(results/**)",
       "Edit(results/**)",
