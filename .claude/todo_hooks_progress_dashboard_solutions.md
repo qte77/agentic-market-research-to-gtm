@@ -1,5 +1,5 @@
 <!-- markdownlint-disable MD024 no-duplicate-heading -->
-# Progress Dashboard Solutions for TrustBuilder AI Pipeline
+# Progress Dashboard Solutions for AI Market Research Pipeline
 
 ## Solution 1: Simple File-Based Dashboard
 
@@ -28,7 +28,7 @@ Create a lightweight progress tracking system using shell commands and file moni
 ```bash
 #!/bin/bash
 # Create results/generate_dashboard.sh
-echo "# TrustBuilder AI Pipeline Progress Dashboard"
+echo "# AI Market Research Pipeline Progress Dashboard"
 echo "Generated: $(date)"
 echo ""
 echo "## File Status"
@@ -106,9 +106,9 @@ Generate HTML dashboard with visual progress indicators.
 cat > results/dashboard.html << 'EOF'
 <!DOCTYPE html>
 <html>
-<head><title>TrustBuilder AI Pipeline Progress</title></head>
+<head><title>AI Market Research Pipeline Progress</title></head>
 <body>
-<h1>🚀 TrustBuilder AI Market Research Pipeline</h1>
+<h1>🚀 AI Market Research Pipeline</h1>
 <h2>Progress Status</h2>
 EOF
 
@@ -140,7 +140,7 @@ Create a live updating terminal dashboard using watch command.
 #!/bin/bash
 clear
 echo "╔══════════════════════════════════════════════════════════════╗"
-echo "║               TrustBuilder AI Pipeline Status                ║"
+echo "║               AI Market Research Pipeline Status             ║"
 echo "╠══════════════════════════════════════════════════════════════╣"
 
 # Research Phase Status
@@ -196,7 +196,7 @@ watch -n 2 bash results/live_dashboard.sh
 
 ## Recommended Solution
 
-For TrustBuilder AI Pipeline: Solution 4 (Terminal-Based Live Dashboard)
+For AI Market Research Pipeline: Solution 4 (Terminal-Based Live Dashboard)
 
 ### Advantages
 
@@ -222,7 +222,7 @@ For TrustBuilder AI Pipeline: Solution 4 (Terminal-Based Live Dashboard)
     "hooks": [
       {
         "type": "command",
-        "command": "if command -v notify-send >/dev/null 2>&1; then notify-send 'TrustBuilder AI' '📄 $(basename \"$FILE_PATH\") completed'; fi"
+        "command": "if command -v notify-send >/dev/null 2>&1; then notify-send 'AI Research Pipeline' '📄 $(basename \"$FILE_PATH\") completed'; fi"
       }
     ]
   }
