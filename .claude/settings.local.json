@@ -14,9 +14,18 @@
       "Bash(source:*)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)",
+      "WebSearch",
       "Write(results/**)",
       "Edit(results/**)",
       "Read(results/**)"
+    ],
+    "ask": [
+      "Edit(.claude/**)",
+      "Edit(AGENTS.md)",
+      "Edit(CLAUDE.md)",
+      "Edit(README.md)",
+      "Write(.claude/**)"
     ],
     "deny": [
       "Bash(cat:*)",
@@ -33,12 +42,7 @@
       "Bash(rm:*)",
       "Bash(tail:*)",
       "Bash(touch:*)",
-      "Bash(tree:*)",
-      "Edit(.claude/**)",
-      "Edit(AGENTS.md)",
-      "Edit(CLAUDE.md)",
-      "Edit(README.md)",
-      "Write(.claude/**)"
+      "Bash(tree:*)"
     ]
   },
   "hooks": {
@@ -48,7 +52,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "mkdir -p results/research results/gtm results/archive/$(date +%Y-%m-%d) && echo '📁 Directory structure created'"
+            "command": "make archive_current && make create_struct && echo '📁 Directory structure created'"
+          },
+          {
+            "type": "command",
+            "command": "echo \"$(date '+%Y-%m-%d %H:%M:%S') - Pipeline session started\" >> results/logs/session.log"
+          },
+          {
+            "type": "command",
+            "command": "if [ -f config/sources.md ] && [ -f config/targets.md ]; then echo '✅ Configuration files validated'; else echo '⚠️ Missing config files - check config/sources.md and config/targets.md'; fi"
+          },
+          {
+            "type": "command",
+            "command": "PREV_SESSIONS=$(find results/archive -maxdepth 1 -type d | wc -l); echo \"📊 Previous sessions: $((PREV_SESSIONS-1))\""
           },
           {
             "type": "command",
@@ -63,7 +79,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '⚡ Starting sub-agent execution: $(date)'"
+            "command": "AGENT_TYPE=$(echo '$TOOL_INPUT' | jq -r '.subagent_type' 2>/dev/null || echo 'unknown'); echo \"⚡ Starting $AGENT_TYPE agent: $(date '+%H:%M:%S')\""
+          },
+          {
+            "type": "command",
+            "command": "DISK_USAGE=$(df . | tail -1 | awk '{print $5}' | sed 's/%//'); if [ \"$DISK_USAGE\" -gt 90 ]; then echo \"⚠️ Warning: Disk usage at $DISK_USAGE%\"; fi"
           }
         ]
       },
@@ -72,7 +92,24 @@
         "hooks": [
           {
             "type": "command",
+            "command": "FILE_PATH=$(echo '$TOOL_INPUT' | jq -r '.file_path' 2>/dev/null || echo 'unknown'); if echo \"$FILE_PATH\" | grep -q '\\.\\./'; then echo '🚨 Security: Path traversal detected in $FILE_PATH' && exit 2; fi"
+          },
+          {
+            "type": "command",
             "command": "FILE_PATH=$(echo '$TOOL_INPUT' | jq -r '.file_path' 2>/dev/null || echo 'unknown'); if [ -f \"$FILE_PATH\" ] && [ \"$FILE_PATH\" != \"unknown\" ]; then BACKUP_DIR=\"results/archive/$(date +%Y-%m-%d)\"; mkdir -p \"$BACKUP_DIR\" && cp \"$FILE_PATH\" \"$BACKUP_DIR/$(basename \"$FILE_PATH\").$(date +%H%M%S).bak\" && echo '💾 Backup created for $(basename \"$FILE_PATH\")'; fi"
+          },
+          {
+            "type": "command",
+            "command": "CONTENT_SIZE=$(echo '$TOOL_INPUT' | jq -r '.content' 2>/dev/null | wc -c); if [ \"$CONTENT_SIZE\" -gt 100000 ]; then echo \"⚠️ Large file warning: $(($CONTENT_SIZE/1000))KB content\"; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "WebFetch(*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "URL=$(echo '$TOOL_INPUT' | jq -r '.url' 2>/dev/null || echo 'unknown'); if echo \"$URL\" | grep -qE '^https?://(docs\\.anthropic\\.com|github\\.com)'; then echo '✅ Validated external request to trusted domain'; else echo '⚠️ External web request to: $URL'; fi"
           }
         ]
       }
@@ -83,11 +120,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "FILE_PATH=$(echo '$TOOL_INPUT' | jq -r '.file_path' 2>/dev/null || echo 'unknown'); if [ \"$FILE_PATH\" != \"unknown\" ]; then echo '📄 $(basename \"$FILE_PATH\") generated successfully'; fi"
+            "command": "FILE_PATH=$(echo '$TOOL_INPUT' | jq -r '.file_path' 2>/dev/null || echo 'unknown'); if [ \"$FILE_PATH\" != \"unknown\" ]; then WORD_COUNT=$(wc -w < \"$FILE_PATH\" 2>/dev/null || echo 0); echo \"📄 $(basename \"$FILE_PATH\") generated ($WORD_COUNT words)\"; echo \"$(date '+%H:%M:%S')|$(basename \"$FILE_PATH\")|$WORD_COUNT|$(stat -c%s \"$FILE_PATH\" 2>/dev/null || echo 0)\" >> results/logs/file_metrics.csv; fi"
           },
           {
             "type": "command",
-            "command": "RESEARCH_COUNT=$(find results/research -name '*.md' 2>/dev/null | wc -l); GTM_COUNT=$(find results/gtm -name '*.md' 2>/dev/null | wc -l); echo \"📊 Progress: Research($RESEARCH_COUNT/5) GTM($GTM_COUNT/5)\""
+            "command": "RESEARCH_COUNT=$(find results/research -name '*.md' 2>/dev/null | wc -l); GTM_COUNT=$(find results/gtm -name '*.md' 2>/dev/null | wc -l); TOTAL_WORDS=$(find results -name '*.md' -exec wc -w {} \\; 2>/dev/null | awk '{sum+=$1} END {print sum+0}'); echo \"📊 Progress: Research($RESEARCH_COUNT/5) GTM($GTM_COUNT/5) Total:$TOTAL_WORDS words\""
+          },
+          {
+            "type": "command",
+            "command": "if [ $(($(find results/research -name '*.md' 2>/dev/null | wc -l))) -eq 5 ] && [ ! -f results/.research_complete ]; then echo \"🎉 Research phase completed!\" && touch results/.research_complete; fi"
+          },
+          {
+            "type": "command",
+            "command": "if [ $(($(find results/gtm -name '*.md' 2>/dev/null | wc -l))) -eq 5 ] && [ ! -f results/.gtm_complete ]; then echo \"🎉 GTM phase completed!\" && touch results/.gtm_complete; fi"
           }
         ]
       },
@@ -96,7 +141,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo \"$(date '+%H:%M:%S') - Sub-agent phase completed\" >> results/pipeline_progress.log"
+            "command": "AGENT_TYPE=$(echo '$TOOL_INPUT' | jq -r '.subagent_type' 2>/dev/null || echo 'unknown'); echo \"$(date '+%H:%M:%S') - $AGENT_TYPE agent completed\" >> results/logs/agent_timeline.log"
+          },
+          {
+            "type": "command",
+            "command": "echo \"🤖 Sub-agent execution completed at $(date '+%H:%M:%S')\""
           }
         ]
       }
@@ -122,11 +171,34 @@
         "hooks": [
           {
             "type": "command",
-            "command": "FINAL_COUNT=$(find results -name '*.md' 2>/dev/null | wc -l); echo \"🎯 Pipeline complete! Generated $FINAL_COUNT strategic documents\""
+            "command": "END_TIME=$(date '+%Y-%m-%d %H:%M:%S'); START_TIME=$(head -1 results/logs/session.log 2>/dev/null | cut -d' ' -f1-2 || echo 'unknown'); echo \"⏱️ Session: $START_TIME to $END_TIME\" >> results/logs/session.log"
+          },
+          {
+            "type": "command",
+            "command": "FINAL_COUNT=$(find results -name '*.md' 2>/dev/null | wc -l); TOTAL_WORDS=$(find results -name '*.md' -exec wc -w {} \\; 2>/dev/null | awk '{sum+=$1} END {print sum+0}'); echo \"🎯 Pipeline complete! Generated $FINAL_COUNT documents ($TOTAL_WORDS words)\""
           },
           {
             "type": "command",
             "command": "TOTAL_SIZE=$(du -sh results/ 2>/dev/null | cut -f1); echo \"📁 Total output: $TOTAL_SIZE in results/\""
+          },
+          {
+            "type": "command",
+            "command": "if [ -f results/.research_complete ] && [ -f results/.gtm_complete ]; then echo \"✅ Full pipeline success: Research + GTM phases completed\"; else echo \"⚠️ Partial completion - check missing phases\"; fi"
+          },
+          {
+            "type": "command",
+            "command": "echo \"📊 Session summary logged in results/logs/\" && if command -v tree >/dev/null 2>&1; then tree results/ -I 'archive' | head -20; else find results/ -name '*.md' | head -10; fi"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if echo '$USER_PROMPT' | grep -qi 'pipeline\\|research\\|gtm'; then echo \"🎯 Detected pipeline execution request - monitoring enabled\"; fi"
           }
         ]
       }
