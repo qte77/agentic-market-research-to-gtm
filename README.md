@@ -209,6 +209,11 @@ This framework uses **orchestrated sub-agents** for automated market research an
   - [ ] Enhanced Makefile targets: with and without validation feedback loop
   - [ ] Validation options: hard stops vs soft warnings vs auto-retry with feedback
   - [ ] Cross-reference validation against source materials and phase consistency
+- [ ] **Slide deck and One Pager generator**
+  - [ ] Condense research and GTM into a concise Slide Deck and One Pager
+  - [ ] Povide deck templates by Sequoia, YC, a16z, etc.
+  - [ ] Save locally as Markdown
+  - [ ] Use pageon.ai or similar services to generate slieds using Markdown
 - [ ] **Pipeline Quality Improvements**
   - [ ] Confidence metrics and quality scoring for each phase
   - [ ] Automated error detection and iterative refinement capability
