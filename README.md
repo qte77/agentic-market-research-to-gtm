@@ -10,7 +10,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-58f4c2.svg)
 [![vscode.dev](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=vscode.dev&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://vscode.dev/github/qte77/agentic-market-research-and-gtm)
 [![Codespace](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Codespace%20Dev&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://github.com/codespaces/new?repo=qte77/agentic-market-research-and-gtm&devcontainer_path=.devcontainer/devcontainer.json)
-[![llms.txt (UitHub)](https://img.shields.io/badge/llms.txt-uithub-800080.svg)](https://github.com/qte77/qte77/agentic-market-research-and-gtm)
+[![llms.txt (UitHub)](https://img.shields.io/badge/llms.txt-uithub-800080.svg)](https://uithub.com/qte77/agentic-market-research-and-gtm)
 
 ## Disclaimer
 
@@ -56,7 +56,7 @@ Before running the pipeline, configure your research targets:
 
 | Method | Command | Description | Use Case |
 |--------|---------|-------------|----------|
-| **Automated Complete Pipeline** | `make all` | Full 3-phase pipeline with dependencies | Recommended for advanced users |
+| **Automated Complete Pipeline** | `make all` | Full pipeline with dependency management | Recommended for advanced users |
 | **Interactive Claude Workflow** | `claude` with user input `"Read and execute the workflow described in AGENTS.md"` | Interactive Claude session with AGENTS.md orchestration | Real-time analysis with human oversight |
 | **Non-interactive Workflow** | `claude -p "Read and execute the workflow described in AGENTS.md"` | Claude orchestrates sub-agents | Advanced workflow with error handling |
 | **Individual Phases** | `make research && make gtm && make synthesis` | Run specific phases independently | Resume from failure or selective processing |
@@ -215,12 +215,12 @@ This framework uses **orchestrated sub-agents** for automated market research an
 ## TODO
 
 - [x] **Validator Sub-Agent Implementation**
-  - [ ] Create `.claude/agents/validator.md` - Validation task definition with claim verification, consistency checks, completeness assessment, and quality scoring
-  - [ ] Add `config/validation_criteria.md` - Quality standards and validation checkpoints
+  - [x] Create `.claude/agents/validator.md` - Validation task definition with claim verification, consistency checks, completeness assessment, and quality scoring
+  - [x] Add `config/validation_criteria.md` - Quality standards and validation checkpoints
   - [ ] Implement feedback loop workflow: `research → validate → gtm → validate → synthesis`
-  - [ ] Enhanced Makefile targets: with and without validation feedback loop
+  - [x] Enhanced Makefile targets: with and without validation feedback loop
   - [ ] Validation options: hard stops vs soft warnings vs auto-retry with feedback
-  - [ ] Cross-reference validation against source materials and phase consistency
+  - [x] Cross-reference validation against source materials and phase consistency
 - [ ] **Slide deck and One Pager generator**
   - [ ] Condense research and GTM into a concise Slide Deck and One Pager
   - [ ] Povide deck templates by Sequoia, YC, a16z, etc.
