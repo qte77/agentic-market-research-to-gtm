@@ -6,6 +6,16 @@
 
 > Go Vertical. Not Ballistic. - Market research and go-to-market strategy development framework for aligning AI startups with investor and market opportunities.
 
+[![License](https://img.shields.io/badge/license-BSD3Clause-58f4c2.svg)](LICENSE)
+![Version](https://img.shields.io/badge/version-1.0.0-58f4c2.svg)
+[![vscode.dev](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=vscode.dev&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://vscode.dev/github/qte77/agentic-market-research-and-gtm)
+[![Codespace](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Codespace%20Dev&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://github.com/codespaces/new?repo=qte77/agentic-market-research-and-gtm&devcontainer_path=.devcontainer/devcontainer.json)
+[![llms.txt (UitHub)](https://img.shields.io/badge/llms.txt-uithub-800080.svg)](https://github.com/qte77/qte77/agentic-market-research-and-gtm)
+
+## Disclaimer
+
+This project heavily relies on the seemingly non-deterministic function-approximation capabilities of LLM-Agents.
+
 ## Purpose
 
 Analyze AI startup technical capabilities and strategic positioning against target investor priorities and successful portfolio patterns to identify optimal market opportunities and develop actionable go-to-market strategies.
@@ -38,7 +48,7 @@ Before running the pipeline, configure your research targets:
 ```markdown
 ## Primary Targets
 
-- **Accelerator Program**: https://accelerator.com
+- [Accelerator Program](https://accelerator.com)
   - Program requirements and portfolio analysis
 ```
 
@@ -70,6 +80,8 @@ Before running the pipeline, configure your research targets:
 ```bash
 make setup_claude_code     # Install Claude Code CLI
 ```
+
+or use the pre-configured [Devcontainer](.devcontainer/devcontainer.json).
 
 ## Automated Features
 

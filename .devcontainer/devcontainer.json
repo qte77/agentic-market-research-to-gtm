@@ -1,0 +1,4 @@
+{
+  "name": "make setup_claude_code",
+  "postCreateCommand": "make setup_claude_code"
+}
