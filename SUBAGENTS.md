@@ -17,7 +17,7 @@ This document contains shared guidelines and patterns for all sub-agents in the 
 
 For each analysis area, provide:
 
-- **Executive Summary** (3-5 key points or strategic insights)
+- **Executive Summary** (Board-ready summary under 500 words, One-page to maximal Three-page visual executive brief, Investor pitch narrative structure, FAQ addressing key concerns, 3-5 key points or strategic insights per item discussed, Clear priority hierarchy, Every insight linked to specific action, Evidence trail to source documents, Quantified metrics where available)
 - **Detailed Findings** (comprehensive analysis or strategic framework)
 - **Strategic Recommendations** (actionable next steps or implementation plan)
 - **Success Metrics** (KPIs, measurement criteria, or data sources)
