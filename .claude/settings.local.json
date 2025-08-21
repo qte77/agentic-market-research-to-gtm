@@ -13,7 +13,6 @@
       "Bash(make:*)",
       "Bash(source:*)",
       "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:github.com)",
       "WebFetch(domain:github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)",
       "WebSearch",
       "Write(results/**)",
@@ -25,6 +24,7 @@
       "Edit(AGENTS.md)",
       "Edit(CLAUDE.md)",
       "Edit(README.md)",
+      "WebFetch(domain:github.com)",
       "Write(.claude/**)"
     ],
     "deny": [
