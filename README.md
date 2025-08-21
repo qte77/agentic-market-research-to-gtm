@@ -22,14 +22,18 @@ Analyze AI startup technical capabilities and strategic positioning against targ
 
 ## Usage
 
+> 2025-08-21: Usage of `claude-sonnet-4-20250514` is adviced as Opus is not as 
+
 ### Configuration Setup
 
 Before running the pipeline, configure your research targets:
 
-1. **Edit `config/sources.md`** - Add projects/companies to be analyzed and aligned
-2. **Edit `config/targets.md`** - Add organizations/markets to align with
-3. **Edit `config/comments_research.md`** - Add auxiliary comments, e.g., constraints and focus areas for market research
-4. **Edit `config/comments_gtm.md`** - Add auxiliary comments, e.g., specific guidance for go-to-market strategy
+1. **Edit `config/sources.md`** - Add projects/companies to be analyzed and aligned (required)
+2. **Edit `config/targets.md`** - Add organizations/markets to align with (required)
+3. **Edit `config/requirements_pmf.md`** - Add PMF analysis requirements (optional)
+4. **Edit `config/requirements_gtm.md`** - Add GTM strategy requirements (optional)
+5. **Edit `config/requirements_research.md`** - Add synthesis requirements (optional)
+6. **Edit `config/validation_criteria.md`** - Add validation criteria (optional)
 
 ### Configuration Examples
 
@@ -100,6 +104,13 @@ For detailed configuration instructions and examples, see individual files in `c
 - Portfolio company competitive analysis
 - Strategic alignment recommendations
 
+**Product-Market Fit Analysis** (`results/pmf/`):
+
+- Problem-solution fit validation
+- Customer engagement and satisfaction metrics
+- Market readiness and adoption indicators
+- PMF scoring and optimization recommendations
+
 **Go-to-Market Strategy** (`results/gtm/`):
 
 - Customer segmentation and ideal customer profiles
@@ -107,7 +118,14 @@ For detailed configuration instructions and examples, see individual files in `c
 - Sales channels and acquisition strategies
 - Launch plan with metrics and timelines
 
-**Research Synthesis** (`results/pipeline_execution_summary.md`):
+**Slide Deck Generation** (`results/slide_decks/`):
+
+- Investor-ready presentation materials
+- Executive summaries in slide format
+- Visual storytelling with data-driven narratives
+- Template-based presentations (Sequoia Capital, YC, etc.)
+
+**Research Synthesis** (`results/synthesis/` and `results/pipeline_execution_summary.md`):
 
 - Executive summaries highlighting key opportunities
 - Strategic alignment and implementation priorities
@@ -118,22 +136,29 @@ For detailed configuration instructions and examples, see individual files in `c
 
 ```bash
 ├── .claude/agents/          # Claude Code sub-agent definitions
-│   ├── market_research_specialist.md  # Market research analysis
-│   ├── gtm_strategy_developer.md      # Go-to-market strategy
-│   ├── results_validator.md           # Quality assurance and validation
-│   └── research_synthesizer.md        # Cross-analysis and synthesis
+│   ├── market-research-specialist.md  # Market research analysis
+│   ├── product-market-fit-analyst.md  # PMF validation and optimization
+│   ├── gtm-strategy-developer.md      # Go-to-market strategy
+│   ├── research-synthesizer.md        # Cross-analysis and synthesis
+│   ├── slide-deck-generator.md        # Presentation generation
+│   └── results-validator.md           # Quality assurance and validation
 ├── config/                  # Configuration files
-│   ├── sources.md           # Projects to be analyzed
-│   ├── targets.md           # Organizations/markets to align with
-│   ├── comments_research.md # Research constraints and focus areas
-│   ├── comments_gtm.md      # GTM strategy guidance
-│   └── validation_criteria.md  # Quality standards and validation rules
+│   ├── sources.md           # Projects to be analyzed (required)
+│   ├── targets.md           # Organizations/markets to align with (required)
+│   ├── requirements_pmf.md  # PMF analysis requirements (optional)
+│   ├── requirements_gtm.md  # GTM strategy requirements (optional)
+│   ├── requirements_research.md # Synthesis requirements (optional)
+│   └── validation_criteria.md  # Quality standards and validation rules (optional)
+├── templates/               # Presentation templates
+│   └── slide_decks/         # Slide deck templates (Sequoia, YC, etc.)
 ├── results/                 # Generated outputs
 │   ├── archive/             # Prior runs (timestamped)
 │   ├── research/            # Market research analysis
+│   ├── pmf/                 # Product-market fit analysis
 │   ├── gtm/                 # Go-to-market strategy
-│   ├── validation/          # Quality assurance reports
 │   ├── synthesis/           # Cross-analysis and strategic integration
+│   ├── slide_decks/         # Investor-ready presentations
+│   ├── validation/          # Quality assurance reports
 │   └── logs/                # Session and progress tracking
 ├── AGENTS.md                # Workflow orchestration with validation loops
 ├── SUBAGENTS.md             # Shared guidelines for all sub-agents
@@ -203,29 +228,44 @@ This framework uses **orchestrated sub-agents** for automated market research an
 
 ### Sub-Agent Layer
 
-- **[market-research-specialist](.claude/agents/market_research_specialist.md)** - Technical capability and competitive analysis
-- **[gtm-strategy-developer](.claude/agents/gtm_strategy_developer.md)** - Go-to-market strategy and customer segmentation
-- **[results-validator](.claude/agents/results_validator.md)** - Quality assurance and claim verification
-- **[research-synthesizer](.claude/agents/research_synthesizer.md)** - Cross-analysis and strategic integration
+- **[market-research-specialist](.claude/agents/market-research-specialist.md)** - Technical capability and competitive analysis
+- **[product-market-fit-analyst](.claude/agents/product-market-fit-analyst.md)** - PMF validation and optimization
+- **[gtm-strategy-developer](.claude/agents/gtm-strategy-developer.md)** - Go-to-market strategy and customer segmentation
+- **[research-synthesizer](.claude/agents/research-synthesizer.md)** - Cross-analysis and strategic integration
+- **[slide-deck-generator](.claude/agents/slide-deck-generator.md)** - Investor-ready presentation generation
+- **[results-validator](.claude/agents/results-validator.md)** - Quality assurance and claim verification
 
 ### Shared Guidelines
 
 - **[SUBAGENTS.md](SUBAGENTS.md)** - Common standards for all sub-agents including file creation requirements, citation standards, and markdown formatting
 
+## Pipeline Features
+
+- ✅ **6-Phase Automated Pipeline**: Market Research → PMF Analysis → GTM Strategy → Research Synthesis → Slide Deck Generation → Pipeline Summary
+- ✅ **Validation Feedback Loops**: Quality assurance with configurable validation cycles (default 1 cycle per phase)
+- ✅ **Pipeline Termination Logic**: Critical phases (1,3,4) halt pipeline on failure; non-critical phases (2,5) marked as FAILED but continue
+- ✅ **Orchestration Abstraction**: AGENTS.md works with any executing agent (Claude Code, other AI systems)
+- ✅ **Environment Variable Tracking**: `CURRENT_AGENT` tracking for progress monitoring and hooks
+- ✅ **Automatic Timestamp Logging**: Pipeline duration calculation with start/end timestamps
+
 ## TODO
 
 - [x] **Validator Sub-Agent Implementation**
-  - [x] Create `.claude/agents/validator.md` - Validation task definition with claim verification, consistency checks, completeness assessment, and quality scoring
+  - [x] Create `.claude/agents/results-validator.md` - Validation task definition with claim verification, consistency checks, completeness assessment, and quality scoring
   - [x] Add `config/validation_criteria.md` - Quality standards and validation checkpoints
-  - [ ] Implement feedback loop workflow: `research → validate → gtm → validate → synthesis`
+  - [x] Implement feedback loop workflow: `research → validate → pmf → validate → gtm → validate → synthesis → validate → slides → validate → summary`
   - [x] Enhanced Makefile targets: with and without validation feedback loop
-  - [ ] Validation options: hard stops vs soft warnings vs auto-retry with feedback
+  - [x] Validation options: configurable cycles, pipeline termination logic
   - [x] Cross-reference validation against source materials and phase consistency
-- [ ] **Slide deck and One Pager generator**
-  - [ ] Condense research and GTM into a concise Slide Deck and One Pager
-  - [ ] Povide deck templates by Sequoia, YC, a16z, etc.
-  - [ ] Save locally as Markdown
-  - [ ] Use pageon.ai or similar services to generate slieds using Markdown
+- [x] **Slide deck and One Pager generator**
+  - [x] Condense research and GTM into a concise Slide Deck and One Pager
+  - [x] Provide deck templates by Sequoia, YC, a16z, etc.
+  - [x] Save locally as Markdown
+  - [ ] Use pageon.ai or similar services to generate slides using Markdown
+- [x] **PMF Analysis Phase**
+  - [x] Create `.claude/agents/product-market-fit-analyst.md` - PMF validation and optimization
+  - [x] Problem-solution fit validation and customer signal analysis
+  - [x] PMF scoring framework and optimization recommendations
 - [ ] **Pipeline Quality Improvements**
   - [ ] Confidence metrics and quality scoring for each phase
   - [ ] Automated error detection and iterative refinement capability

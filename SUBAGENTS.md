@@ -17,18 +17,30 @@ This document contains shared guidelines and patterns for all sub-agents in the 
 
 For each analysis area, provide:
 
-- **Executive Summary** (Board-ready summary under 500 words, One-page to maximal Three-page visual executive brief, Investor pitch narrative structure, FAQ addressing key concerns, 3-5 key points or strategic insights per item discussed, Clear priority hierarchy, Every insight linked to specific action, Evidence trail to source documents, Quantified metrics where available)
+- **Executive Summary** (Board-ready summary under 500 words with the following requirements):
+  - One-page to maximum three-page visual executive brief
+  - Investor pitch narrative structure
+  - FAQ addressing key concerns
+  - 3-5 key points or strategic insights per item discussed
+  - Clear priority hierarchy
+  - Every insight linked to specific action
+  - Evidence trail to source documents
+  - Quantified metrics where available
 - **Detailed Findings** (comprehensive analysis or strategic framework)
 - **Strategic Recommendations** (actionable next steps or implementation plan)
 - **Success Metrics** (KPIs, measurement criteria, or data sources)
 
 ## Implementation Instructions Template
 
-1. **START**: Use LS to check target directory exists
+1. **START**: Use LS to check target directory exists (directories are created by pipeline hooks)
 2. **READ INPUTS**: Use Read tool to analyze required source files
-3. **FOR EACH FILE**: Use Write tool with full path `/results/[directory]/[filename]`
-4. **VERIFY**: Use LS to confirm each file was created
-5. **COMPLETE**: Ensure all required files exist before finishing
+3. **FETCH SOURCES**: All subagents must fetch URLs when provided in task prompts:
+   - Use WebFetch to retrieve content from each URL
+   - Document the URL, date accessed, and key findings
+   - Include these URLs as citations in your output files
+4. **FOR EACH FILE**: Use Write tool with full path `/results/[directory]/[filename]`
+5. **VERIFY**: Use LS to confirm each file was created
+6. **COMPLETE**: Ensure all required files exist before finishing
 
 ## Critical Warning
 
@@ -36,16 +48,13 @@ For each analysis area, provide:
 
 Each sub-agent must produce actual markdown files in their designated results directory. Text-only responses without file creation constitute incomplete task execution.
 
-## Directory Structure
-
-- `results/research/` - Market research specialist outputs
-- `results/gtm/` - GTM strategy developer outputs  
-- `results/synthesis/` - Research synthesizer outputs
-- `results/validation/` - Results validator outputs
-
 ## Mandatory Citation Requirements
 
+**CRITICAL - VALIDATION WILL FAIL WITHOUT PROPER CITATIONS**
+
 **ALL CLAIMS MUST INCLUDE PROPER SOURCE DOCUMENTATION:**
+
+**This means:** Every factual statement, market size, funding amount, company metric, or competitive claim MUST have an inline citation immediately following it. No exceptions.
 
 - **Web URLs**: Include full URLs for all online sources (e.g., https://techcrunch.com/2024/article-title)
 - **Book Citations**: Include ISBN, author, title, publication year (e.g., "AI Strategy" by John Smith, ISBN: 978-1234567890, 2024)
@@ -67,13 +76,12 @@ Each sub-agent must produce actual markdown files in their designated results di
 - Provide quantitative metrics where possible
 - Maintain professional executive-level tone
 - Focus on strategic business value and implementation feasibility
-- **MANDATORY**: Every factual claim must include proper source citation
 
 ## Markdown Formatting Requirements
 
 **ALL OUTPUT FILES MUST BE VALID MARKDOWN** adhering to markdownlint rules:
 
-- **Reference**: <https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md>
+- **Reference**: [markdownlint rules documentation](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)
 - **Validation**: Ensure all markdown files pass linting without errors
 - **Key Requirements**:
   - Proper heading hierarchy (H1 → H2 → H3, no skipping levels)

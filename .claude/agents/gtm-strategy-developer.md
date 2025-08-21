@@ -21,7 +21,7 @@ Create complete GTM strategy by analyzing market research and developing:
 
 ## Input Sources
 
-**FIRST**: Use Read tool to analyze market research from `results/research/` and GTM guidance from `config/comments_gtm.md`.
+**FIRST**: Use Read tool to analyze market research from `results/research/` (STOP EXECUTION if results/research/ directory is empty - return error: "Missing required research outputs in results/research/ directory") and optionally PMF analysis from `results/pmf/` (proceed if empty) and GTM requirements from `config/requirements_gtm.md` (optional - proceed if not found).
 
 ## Strategy Framework
 
