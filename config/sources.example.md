@@ -2,7 +2,9 @@
 
 ## Primary Project
 
-- [Next.js + Stripe + Supabase Production-Ready Template](https://github.com/supabase-community/supabase-mcp)
+- [your_project_name](https://github.com/your_project_here)
+  - Additional info #1
+  - Additional info #N
 
 ## Additional Projects
 

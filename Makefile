@@ -7,7 +7,7 @@
 .DEFAULT_GOAL := help
 
 AGENTS_DIR := .claude/agents
-
+RESULT_DIRS := results/gtm results/pmf results/research results/validation results/synthesis results/slide_decks results/logs
 
 # MARK: Pipeline
 
@@ -94,13 +94,13 @@ validate-gtm-loop:  ## Validate GTM with correction loop
 
 
 archive_current:  ## Archive current project to results/archive/
-	if ls $(RESULT_DIRS) results/pipeline_execution_summary.md >/dev/null 2>&1; then \
-		ARCHIVE_DIR="results/archive/$(date +%Y-%m-%d-%H%M%S)"; \
-		mkdir -p "$${ARCHIVE_DIR}"; \
-		mv $(RESULT_DIRS) results/pipeline_execution_summary.md "$${ARCHIVE_DIR}/" 2>/dev/null || true; \
-		echo "Archived to $${ARCHIVE_DIR}"; \
-	else \
-		echo "No current project to archive"; \
+	if ls $(RESULT_DIRS) results/pipeline_execution_summary.md >/dev/null 2>&1; then
+		ARCHIVE_DIR="results/archive/$(date +%Y-%m-%d-%H%M%S)"
+		mkdir -p "$${ARCHIVE_DIR}"
+		mv $(RESULT_DIRS) results/pipeline_execution_summary.md "$${ARCHIVE_DIR}/" 2>/dev/null || true
+		echo "Archived to $${ARCHIVE_DIR}"
+	else
+		echo "No current project to archive"
 	fi
 
 create_struct:  ## Setup directory structure
