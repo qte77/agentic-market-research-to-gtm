@@ -14,7 +14,7 @@
 
 ## Disclaimer
 
-This project heavily relies on the seemingly non-deterministic function-approximation capabilities of LLM-Agents.
+> This project heavily relies on the seemingly non-deterministic function-approximation capabilities of LLM-Agents.
 
 ## Purpose
 
@@ -22,7 +22,17 @@ Analyze AI startup technical capabilities and strategic positioning against targ
 
 ## Usage
 
-> 2025-08-21: Usage of `claude-sonnet-4-20250514` is adviced as Opus is not as 
+> 2025-08-21: Usage of `claude-sonnet-4-20250514` is adviced as `Opus` is not as capable for this setup
+
+### Execution Methods
+
+| Method | Command | Description | Use Case |
+|--------|---------|-------------|----------|
+| **Interactive Claude Workflow** | `claude` with user input `"Read and execute the workflow described in AGENTS.md"` | Interactive Claude session with AGENTS.md orchestration | Real-time analysis with human oversight |
+| **Non-interactive Workflow** | `claude -p "Read and execute the workflow described in AGENTS.md"` | Claude orchestrates sub-agents | Advanced workflow with error handling |
+| **Automated Complete Pipeline** | `make all` | Full pipeline with dependency management | Recommended for advanced users |
+| **Individual Phases** | `make research && make gtm && make synthesis` | Run specific phases independently | Resume from failure or selective processing |
+| **Manual Tasks** | `cat .claude/agents/market_research.md \| claude -p "execute"`<br>`cat .claude/agents/gtm_strategy.md \| claude -p "execute"`<br>`cat .claude/agents/research_synthesizer.md \| claude -p "execute"` | Direct agent execution | Debugging or custom workflows |
 
 ### Configuration Setup
 
@@ -55,17 +65,6 @@ Before running the pipeline, configure your research targets:
 - [Accelerator Program](https://accelerator.com)
   - Program requirements and portfolio analysis
 ```
-
-### Execution Methods
-
-| Method | Command | Description | Use Case |
-|--------|---------|-------------|----------|
-| **Automated Complete Pipeline** | `make all` | Full pipeline with dependency management | Recommended for advanced users |
-| **Interactive Claude Workflow** | `claude` with user input `"Read and execute the workflow described in AGENTS.md"` | Interactive Claude session with AGENTS.md orchestration | Real-time analysis with human oversight |
-| **Non-interactive Workflow** | `claude -p "Read and execute the workflow described in AGENTS.md"` | Claude orchestrates sub-agents | Advanced workflow with error handling |
-| **Individual Phases** | `make research && make gtm && make synthesis` | Run specific phases independently | Resume from failure or selective processing |
-| **Manual Tasks** | `cat .claude/agents/market_research.md \| claude -p "execute"`<br>`cat .claude/agents/gtm_strategy.md \| claude -p "execute"`<br>`cat .claude/agents/research_synthesizer.md \| claude -p "execute"` | Direct agent execution | Debugging or custom workflows |
-| **Setup & Utilities** | `make create_struct && make clean_struct && make setup_claude_code` | Environment preparation | Initial setup and maintenance |
 
 ## Requirements
 
