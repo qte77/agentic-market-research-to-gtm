@@ -1,4 +1,5 @@
 {
+  "model": "claude-sonnet-4-20250514",
   "env": {
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
     "DISABLE_TELEMETRY": "1"
@@ -12,20 +13,13 @@
       "Bash(git log --grep:*)",
       "Bash(make:*)",
       "Bash(source:*)",
-      "WebFetch(domain:docs.anthropic.com)",
-      "WebFetch(domain:github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)",
-      "WebSearch",
-      "Write(results/**)",
+
       "Edit(results/**)",
-      "Read(results/**)"
-    ],
-    "ask": [
-      "Edit(.claude/**)",
-      "Edit(AGENTS.md)",
-      "Edit(CLAUDE.md)",
-      "Edit(README.md)",
-      "WebFetch(domain:github.com)",
-      "Write(.claude/**)"
+      "Write(results/**)",
+      "Read(results/**)",
+      
+      "WebFetch",
+      "WebSearch"
     ],
     "deny": [
       "Bash(cat:*)",
@@ -43,6 +37,13 @@
       "Bash(tail:*)",
       "Bash(touch:*)",
       "Bash(tree:*)"
+    ],
+    "ask": [
+      "Edit(.claude/**)",
+      "Edit(AGENTS.md)",
+      "Edit(CLAUDE.md)",
+      "Edit(README.md)",
+      "Write(.claude/**)"
     ]
   },
   "statusLine": {
