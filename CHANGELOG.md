@@ -27,23 +27,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2.0.0] - 2025-08-18
+## [2.0.0] - 2025-08-31
 
 ### Added
 
-- Live dashboard script for real-time AI Market Research Pipeline monitoring
-- VC Corner pitch deck template with structured sections for investor presentations
-- Source project analyst agent for technical architecture assessment
-- Industry landscape researcher agent for competitive analysis and market research
-- Contradiction analyzer agent for identifying conflicts and resolving strategic inconsistencies
+- Parallel execution framework for Phase 0 (source analysis) and Phase 1A (industry landscape)
+- Enhanced validation protocol with configurable correction loops (n=1 to N)
+- Pipeline execution mode detection (concise/detailed + conservative/ambitious)
+- Three new specialized agents:
+  - Source project analyst for technical architecture assessment
+  - Industry landscape researcher for competitive analysis
+  - Contradiction analyzer for strategic inconsistency resolution
+- Live dashboard script for real-time pipeline monitoring (`scripts/live_dashboard.sh`)
+- VC Corner pitch deck template with structured investor presentation sections
 
 ### Changed
 
-- Enhanced README with revised usage instructions and improved configuration setup
-- Updated CLAUDE.md agent configuration with separate orchestrator and subagent sections
-- Streamlined Makefile pipeline execution with enhanced directory management
-- Improved SUBAGENTS.md guidelines for output adaptation and file creation processes
-- Updated agent specifications with better validation and correction loops
+- Major pipeline restructuring: 7-phase workflow with parallel optimization
+- Enhanced orchestration with TodoWrite progress tracking and Task tool management
+- Streamlined agent configuration separation (AGENTS.md vs SUBAGENTS.md)
+- Improved validation strategy with phase-specific feedback loops
+- Updated directory structure with additional result categories
+- Enhanced Makefile with better directory management and archiving
 
 ### Fixed
 

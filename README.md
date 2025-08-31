@@ -6,6 +6,13 @@
 
 > Go Vertical. Not Ballistic. - Market research and go-to-market strategy development framework for aligning AI startups with investor and market opportunities.
 
+[![License](https://img.shields.io/badge/license-BSD3Clause-58f4c2.svg)](LICENSE)
+![Version](https://img.shields.io/badge/version-2.0.0-58f4c2.svg)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Ready-FF6B35?logo=anthropic&logoColor=white)](https://claude.ai/code)
+[![vscode.dev](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=vscode.dev&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://vscode.dev/github/qte77/agentic-market-research-to-gtm)
+[![Codespace Dev](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Codespace%20Dev&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://github.com/codespaces/new?repo=qte77/agentic-market-research-to-gtm&devcontainer_path=.devcontainer/devcontainer.json)
+[![llms.txt (UitHub)](https://img.shields.io/badge/llms.txt-uithub-800080.svg)](https://uithub.com/qte77/agentic-market-research-to-gtm)
+
 ## Purpose
 
 Analyze AI startup technical capabilities and strategic positioning against target investor priorities and successful portfolio patterns to identify optimal market opportunities and develop actionable go-to-market strategies.
