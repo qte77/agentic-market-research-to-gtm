@@ -3,44 +3,84 @@
 
 This document contains shared guidelines and patterns for all sub-agents in the AI startup market research pipeline.
 
+## Pipeline Mode Adaptation
+
+**ALL SUBAGENTS MUST ADAPT THEIR OUTPUT BASED ON THE DUAL MODES SPECIFIED IN THEIR INVOCATION PROMPT:**
+
+### Content Depth Modes
+
+#### Concise Mode
+
+**Target**: Executive-focused, essential insights only
+**File Output**: Same number of files as detailed mode (5-6 files per phase)
+**Content Depth**: 1-2 pages per file (500-1000 words)
+**Focus**: Key findings, strategic recommendations, and actionable next steps only
+**Audience**: C-level executives, investors, board presentations
+**Execution**: Faster turnaround, streamlined analysis
+
+#### Detailed Mode
+
+**Target**: Research-grade thoroughness with complete context
+**File Output**: 5-6 comprehensive files per phase (current standard)
+**Content Depth**: 3-5 pages per file (1500-2500 words)
+**Focus**: Complete analysis, supporting data, methodology, and comprehensive insights
+**Audience**: Research teams, strategic planning, due diligence
+**Execution**: Full depth analysis with extensive documentation
+
+### Strategic Approach Modes
+
+#### Conservative Mode
+
+**Target**: Risk-aware, measured strategic recommendations
+**Market Sizing**: Lower-end TAM/SOM/SAM estimates, realistic capture rates (0.1-1% TAM)
+**Growth Strategy**: Conservative projections (2-5x annually), proven approaches
+**Validation**: Require stronger proof points and established market evidence
+
+#### Ambitious Mode
+
+**Target**: High-growth, bold strategic recommendations
+**Market Sizing**: Higher-end TAM/SOM/SAM estimates, optimistic capture rates (1-10% TAM)
+**Growth Strategy**: Aggressive projections (5-20x annually), disruptive approaches
+**Validation**: Accept early signals and emerging market opportunities
+
+### Mode Implementation Requirements
+
+1. **Check invocation prompt** for both mode specifications (depth: concise/detailed, strategy: conservative/ambitious)
+2. **Adapt content depth** according to depth mode (file count remains 5-6 files per phase)
+3. **Adapt strategic approach** according to strategy mode (research methodology and recommendations)
+4. **Maintain quality standards** regardless of mode combination
+5. **Log both mode usage** in pipeline execution summary
+6. **Default modes**: Concise + Conservative if no modes specified
+
 ## Critical: File Creation Requirements
 
 **YOU MUST CREATE ACTUAL FILES** - This is not a text generation task. You must use the Write tool to create each deliverable as a separate markdown file.
 
 ### Required Process
 
-1. Use LS tool to verify target directory exists (create with Write if needed)
-2. Use Write tool to create each required file with complete content
-3. Use LS tool after creation to verify files were written successfully
+1. Use LS tool to verify target directory exists
+2. If directory doesn't exist, create a placeholder file (e.g., `results/[directory]/.gitkeep`) to establish the directory
+3. Use Write tool to create each required file with complete content  
+4. Use LS tool after creation to verify files were written successfully
+
+**Note**: Write tool creates directories automatically when writing files with full paths.
 
 ## Standard Framework Components
 
 For each analysis area, provide:
 
-- **Executive Summary** (Board-ready summary under 500 words with the following requirements):
-  - One-page to maximum three-page visual executive brief
-  - Investor pitch narrative structure
-  - FAQ addressing key concerns
-  - 3-5 key points or strategic insights per item discussed
-  - Clear priority hierarchy
-  - Every insight linked to specific action
-  - Evidence trail to source documents
-  - Quantified metrics where available
+- **Executive Summary** (Board-ready summary 1-2 pages maximum, Investor pitch narrative structure, FAQ addressing key concerns, 3-5 key points or strategic insights per item discussed, Clear priority hierarchy, Every insight linked to specific action, Evidence trail to source documents, Quantified metrics where available)
 - **Detailed Findings** (comprehensive analysis or strategic framework)
 - **Strategic Recommendations** (actionable next steps or implementation plan)
 - **Success Metrics** (KPIs, measurement criteria, or data sources)
 
 ## Implementation Instructions Template
 
-1. **START**: Use LS to check target directory exists (directories are created by pipeline hooks)
+1. **START**: Use LS to check target directory exists
 2. **READ INPUTS**: Use Read tool to analyze required source files
-3. **FETCH SOURCES**: All subagents must fetch URLs when provided in task prompts:
-   - Use WebFetch to retrieve content from each URL
-   - Document the URL, date accessed, and key findings
-   - Include these URLs as citations in your output files
-4. **FOR EACH FILE**: Use Write tool with full path `/results/[directory]/[filename]`
-5. **VERIFY**: Use LS to confirm each file was created
-6. **COMPLETE**: Ensure all required files exist before finishing
+3. **FOR EACH FILE**: Use Write tool with full path `/results/[directory]/[filename]`
+4. **VERIFY**: Use LS to confirm each file was created
+5. **COMPLETE**: Ensure all required files exist before finishing
 
 ## Critical Warning
 
@@ -50,11 +90,7 @@ Each sub-agent must produce actual markdown files in their designated results di
 
 ## Mandatory Citation Requirements
 
-**CRITICAL - VALIDATION WILL FAIL WITHOUT PROPER CITATIONS**
-
 **ALL CLAIMS MUST INCLUDE PROPER SOURCE DOCUMENTATION:**
-
-**This means:** Every factual statement, market size, funding amount, company metric, or competitive claim MUST have an inline citation immediately following it. No exceptions.
 
 - **Web URLs**: Include full URLs for all online sources (e.g., https://techcrunch.com/2024/article-title)
 - **Book Citations**: Include ISBN, author, title, publication year (e.g., "AI Strategy" by John Smith, ISBN: 978-1234567890, 2024)
@@ -76,12 +112,13 @@ Each sub-agent must produce actual markdown files in their designated results di
 - Provide quantitative metrics where possible
 - Maintain professional executive-level tone
 - Focus on strategic business value and implementation feasibility
+- **MANDATORY**: Every factual claim must include proper source citation
 
 ## Markdown Formatting Requirements
 
 **ALL OUTPUT FILES MUST BE VALID MARKDOWN** adhering to markdownlint rules:
 
-- **Reference**: [markdownlint rules documentation](https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md)
+- **Reference**: <https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md>
 - **Validation**: Ensure all markdown files pass linting without errors
 - **Key Requirements**:
   - Proper heading hierarchy (H1 → H2 → H3, no skipping levels)
