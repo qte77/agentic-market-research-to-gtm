@@ -57,19 +57,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '[HOOK:SETUP] Archiving previous results and creating directory structure'; make archive_current && make create_struct && echo '📁 Directory structure created'"
-          },
-          {
-            "type": "command",
-            "command": "echo '[HOOK:LOG] Recording session start time'; [ ! -d results/logs ] && mkdir -p results/logs 2>/dev/null; echo \"`date '+%Y-%m-%d %H:%M:%S'` - Pipeline session started\" >> results/logs/session.log"
-          },
-          {
-            "type": "command",
             "command": "echo '[HOOK:CONFIG] Validating configuration files'; if [ -f config/sources.md ] && [ -f config/targets.md ]; then echo '✅ Configuration files validated'; else echo '⚠️  Missing config files - check config/sources.md and config/targets.md'; fi"
           },
           {
             "type": "command",
-            "command": "echo '[HOOK:STATS] Counting previous pipeline sessions'; PREV_SESSIONS=`find results/archive -maxdepth 1 -type d 2>/dev/null | wc -l`; echo \"📊 Previous sessions: `expr $PREV_SESSIONS - 1`\""
+            "command": "echo '[HOOK:LOG] Recording session start time'"
           },
           {
             "type": "command",
@@ -202,11 +194,19 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '[HOOK:DETECT] Analyzing user prompt for pipeline execution keywords'; input=$(cat 2>/dev/null || echo '{}'); user_prompt=$(echo \"$input\" | jq -r '.prompt // \"no-prompt\"' 2>/dev/null); if echo \"$user_prompt\" | grep -qi 'pipeline\\|research\\|gtm\\|validate'; then echo \"🎯 Detected pipeline execution request - monitoring enabled\"; fi"
+            "command": "echo '[HOOK:DETECT] Analyzing user prompt for pipeline execution keywords'; input=$(cat 2>/dev/null || echo '{}'); user_prompt=$(echo \"$input\" | jq -r '.prompt // \"no-prompt\"' 2>/dev/null); if echo \"$user_prompt\" | grep -qi 'execute.*pipeline\\|run.*pipeline\\|start.*pipeline\\|Read and execute.*AGENTS\\.md\\|execute.*workflow.*AGENTS\\.md\\|execute.*AGENTS\\.md'; then echo \"🎯 Detected pipeline execution request - monitoring enabled\"; fi"
           },
           {
             "type": "command",
-            "command": "echo '[HOOK:MODE] Detecting and logging pipeline execution mode'; input=`cat 2>/dev/null || echo '{}'`; user_prompt=`echo \"$input\" | jq -r '.prompt // \"no-prompt\"' 2>/dev/null`; MODE=\"detailed\"; if echo \"$user_prompt\" | grep -qi 'concise.*mode\\|execute.*concise\\|in concise mode'; then MODE=\"concise\"; elif echo \"$user_prompt\" | grep -qi 'detailed.*mode\\|execute.*detailed\\|in detailed mode'; then MODE=\"detailed\"; fi; if echo \"$user_prompt\" | grep -qi 'mode\\|concise\\|detailed'; then echo \"📋 Pipeline mode detected: $MODE\" && [ ! -d results/logs ] && mkdir -p results/logs 2>/dev/null && echo \"`date '+%Y-%m-%d %H:%M:%S'` - Pipeline executed in $MODE mode\" >> results/logs/mode_log.txt; fi"
+            "command": "echo '[HOOK:SETUP] Archiving previous results and creating directory structure'; input=$(cat 2>/dev/null || echo '{}'); user_prompt=$(echo \"$input\" | jq -r '.prompt // \"no-prompt\"' 2>/dev/null); if echo \"$user_prompt\" | grep -qi 'execute.*pipeline\\|run.*pipeline\\|start.*pipeline\\|Read and execute.*AGENTS\\.md\\|execute.*workflow.*AGENTS\\.md\\|execute.*AGENTS\\.md'; then echo 'Archiving current pipeline results...'; make archive_current && make create_struct && echo '📁 Directory structure created'; fi"
+          },
+          {
+            "type": "command",
+            "command": "echo '[HOOK:STATS] Counting previous pipeline sessions'; input=$(cat 2>/dev/null || echo '{}'); user_prompt=$(echo \"$input\" | jq -r '.prompt // \"no-prompt\"' 2>/dev/null); if echo \"$user_prompt\" | grep -qi 'execute.*pipeline\\|run.*pipeline\\|start.*pipeline\\|Read and execute.*AGENTS\\.md\\|execute.*workflow.*AGENTS\\.md\\|execute.*AGENTS\\.md'; then PREV_SESSIONS=`find results/archive -maxdepth 1 -type d 2>/dev/null | wc -l`; echo \"📊 Previous sessions: `expr $PREV_SESSIONS - 1`\"; fi"
+          },
+          {
+            "type": "command",
+            "command": "echo '[HOOK:MODE] Detecting and logging pipeline execution mode'; input=`cat 2>/dev/null || echo '{}'`; user_prompt=`echo \"$input\" | jq -r '.prompt // \"no-prompt\"' 2>/dev/null`; if echo \"$user_prompt\" | grep -qi 'execute.*pipeline\\|run.*pipeline\\|start.*pipeline\\|Read and execute.*AGENTS\\.md\\|execute.*workflow.*AGENTS\\.md\\|execute.*AGENTS\\.md'; then MODE=\"detailed\"; if echo \"$user_prompt\" | grep -qi 'concise.*mode\\|execute.*concise\\|in concise mode'; then MODE=\"concise\"; elif echo \"$user_prompt\" | grep -qi 'detailed.*mode\\|execute.*detailed\\|in detailed mode'; then MODE=\"detailed\"; fi; echo \"📋 Pipeline mode detected: $MODE\" && [ ! -d results/logs ] && mkdir -p results/logs 2>/dev/null && echo \"`date '+%Y-%m-%d %H:%M:%S'` - Pipeline executed in $MODE mode\" >> results/logs/mode_log.txt; fi"
           }
         ]
       }

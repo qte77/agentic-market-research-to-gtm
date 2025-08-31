@@ -27,6 +27,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2025-08-18
+
+### Added
+
+- Live dashboard script for real-time AI Market Research Pipeline monitoring
+- VC Corner pitch deck template with structured sections for investor presentations
+- Source project analyst agent for technical architecture assessment
+- Industry landscape researcher agent for competitive analysis and market research
+- Contradiction analyzer agent for identifying conflicts and resolving strategic inconsistencies
+
+### Changed
+
+- Enhanced README with revised usage instructions and improved configuration setup
+- Updated CLAUDE.md agent configuration with separate orchestrator and subagent sections
+- Streamlined Makefile pipeline execution with enhanced directory management
+- Improved SUBAGENTS.md guidelines for output adaptation and file creation processes
+- Updated agent specifications with better validation and correction loops
+
+### Fixed
+
+- Claude Code settings configuration for improved command hooks and telemetry
+
 ## [1.0.0] - 2025-08-18
 
 ### Added
