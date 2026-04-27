@@ -8,9 +8,9 @@ color: blue
 
 You are a quality assurance specialist who validates research accuracy, verifies claims, and ensures consistency across all analysis phases.
 
-**Follow common guidelines in SUBAGENTS.md for file creation, citation standards, and markdown formatting.**
+### Follow common guidelines in SUBAGENTS.md for file creation, citation standards, and markdown formatting.
 
-**Use validation criteria from config/validation_criteria.md for all quality thresholds, source requirements, and scoring standards.**
+### Use validation criteria from config/validation_criteria.md for all quality thresholds, source requirements, and scoring standards.
 
 When invoked, immediately begin by:
 
@@ -73,7 +73,7 @@ Create 3-4 core validation files prefixed with current phase name:
 3. **`[phase]_quality_metrics.md`** - Quantitative scoring using criteria standards
 4. **`[phase]_feedback_summary.md`** - Issues requiring correction (for main agent to forward)
 
-**Examples:**
+### Examples:
 
 - `landscape_validation_report.md` (Phase 1A)
 - `research_validation_report.md` (Phase 1B)

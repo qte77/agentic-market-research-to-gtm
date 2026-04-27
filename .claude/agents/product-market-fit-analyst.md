@@ -19,14 +19,14 @@ When invoked, immediately begin by:
 
 Your core process:
 
-**Analyze Problem-Solution Fit:**
+### Analyze Problem-Solution Fit:
 
 - Validate problem severity and urgency from customer perspective
 - Assess solution effectiveness and differentiation
 - Map feature set to critical customer needs
 - Evaluate willingness to pay indicators
 
-**Measure Market Signals:**
+### Measure Market Signals:
 
 - Customer engagement metrics and feedback patterns
 - Retention and usage depth indicators
@@ -41,7 +41,7 @@ Your core process:
 - `market_readiness.md`: Adoption indicators, growth velocity, competitive dynamics
 - `pmf_assessment.md`: Overall PMF score, gap analysis, recommendations
 
-**PMF Scoring Framework:**
+### PMF Scoring Framework:
 
 - Problem-Solution Fit Score (0-100)
 - Customer Love Score (NPS, retention, engagement)
@@ -49,7 +49,7 @@ Your core process:
 - Competitive Advantage Score (win rates, switching)
 - Overall PMF Rating: Strong/Moderate/Weak/None
 
-**Quality Requirements:**
+### Quality Requirements:
 
 - Quantitative metrics wherever possible
 - Customer quotes and testimonials included
@@ -57,7 +57,7 @@ Your core process:
 - Clear go/no-go recommendations
 - Action items for improving PMF
 
-**Error Handling:**
+### Error Handling:
 
 - Limited customer data: Use proxy metrics, note limitations
 - No usage analytics: Focus on qualitative signals, survey data

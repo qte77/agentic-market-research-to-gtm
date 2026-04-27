@@ -21,14 +21,14 @@ Your core process:
 
 Use the following as defaults if not stated otherwise by the requirements comments.
 
-**Integrate Source Project Analysis:**
+### Integrate Source Project Analysis:
 
 - Leverage technical analysis from `results/source/project_analysis.md`
 - Map technical capabilities to investor thesis and portfolio patterns
 - Integrate source project insights with competitive landscape for strategic positioning
 - Translate technical differentiation into market positioning advantages
 
-**Competitive Business Analysis (Based on Landscape Data):**
+### Competitive Business Analysis (Based on Landscape Data):
 
 - Analyze competitor funding patterns, investment rounds, and valuation trends
 - Research pricing models, monetization strategies, and revenue approaches
@@ -37,7 +37,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Identify market gaps and underserved segments based on competitive positioning
 - Map business model evolution and strategic pivots in the competitive landscape
 
-**Strategic Investment Analysis:**
+### Strategic Investment Analysis:
 
 - Leverage competitive landscape insights to identify market positioning opportunities
 - Analyze investor thesis alignment and portfolio pattern matching against competitive context
@@ -54,7 +54,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - `strategic_positioning.md`: Strategic market positioning based on competitive landscape insights
 - `investment_readiness.md`: Investment readiness assessment and strategic recommendations
 
-**Data Integration Requirements:**
+### Data Integration Requirements:
 
 - Read source project analysis from `results/source/project_analysis.md` before proceeding
 - Read all 5 landscape files from `results/landscape/` before proceeding
@@ -64,7 +64,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Ensure investment recommendations align with technical capabilities and industry trend analysis
 - Integrate source project insights with competitive landscape for comprehensive market positioning
 
-**Error Handling:**
+### Error Handling:
 
 - Missing config files: Note gaps, proceed with available data
 - Missing landscape research files from `results/landscape/`: Flag gap, note impact on analysis quality

@@ -20,7 +20,7 @@ Your core process:
 
 Use the following as defaults if not stated otherwise by the requirements comments.
 
-**Industry Landscape Mapping:**
+### Industry Landscape Mapping:
 
 - Research direct and indirect competitors in the AI/ML space
 - Identify similar commercial products, services, and platforms
@@ -28,7 +28,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Analyze academic research from arxiv.org and other sources
 - Document company profiles, product offerings, and technical capabilities
 
-**Competitive Intelligence (Data Collection Only):**
+### Competitive Intelligence (Data Collection Only):
 
 - Identify key players and their product portfolios
 - Map competitive landscape structure and market segments
@@ -36,7 +36,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Document technical capabilities and feature sets
 - Collect factual information about company backgrounds and histories
 
-**Open Source Ecosystem Mapping:**
+### Open Source Ecosystem Mapping:
 
 - Identify relevant open-source projects and libraries
 - Document adoption metrics, community activity, and development trends
@@ -44,7 +44,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Track licensing models and project governance structures
 - Document technical architectures and implementation approaches
 
-**Academic Research Integration:**
+### Academic Research Integration:
 
 - Search arxiv.org for relevant research papers and breakthroughs
 - Identify emerging trends and future technology directions
@@ -60,7 +60,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - `technology_trends_analysis.md`: Emerging technology trends and technical directions
 - `landscape_data_summary.md`: Factual overview of industry players, technologies, and research
 
-**Research Sources and Methods:**
+### Research Sources and Methods:
 
 - Company websites, product pages, and documentation
 - GitHub repositories and open-source project metrics
@@ -69,7 +69,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Funding databases (Crunchbase, PitchBook) and investor portfolios
 - Technology blogs, developer communities, and conference proceedings
 
-**Error Handling:**
+### Error Handling:
 
 - Missing config files: Note gaps, proceed with general AI/ML landscape
 - Inaccessible sources: Document issue, use alternative sources

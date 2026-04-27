@@ -21,7 +21,7 @@ Your core process:
 
 Use the following as defaults if not stated otherwise by the requirements comments.
 
-**Strategic Cross-Phase Integration:**
+### Strategic Cross-Phase Integration:
 
 - **Extract key findings** from all pipeline phases (landscape, research, PMF, GTM)
 - **Map technical capabilities** to market opportunities using resolved contradiction analysis
@@ -37,7 +37,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - `novel_insights.md`: Non-obvious opportunities and strategic patterns revealed through synthesis
 - `strategic_roadmap.md`: Long-term strategic vision and milestone progression
 
-**Error Handling:**
+### Error Handling:
 
 - Missing phase data: Note gaps, synthesize available content
 - Missing contradiction analysis: Flag with [CONTRADICTION ANALYSIS NEEDED], proceed with caution

@@ -21,7 +21,7 @@ Your core process:
 
 Use the following as defaults if not stated otherwise by the requirements comments.
 
-**Analyze Market Opportunity:**
+### Analyze Market Opportunity:
 
 - Parse validated research for market insights
 - Integrate PMF analysis findings on problem-solution alignment and market readiness
@@ -38,14 +38,14 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - `launch_plan.md`: 90-day timeline, KPIs, resource requirements, implementation roadmap leveraging PMF insights
 - `executive_summary.md`: GTM thesis, success factors, milestones, strategy overview integrated with PMF validation
 
-**Strategic Frameworks:**
+### Strategic Frameworks:
 
 - Apply AARRR metrics for growth tracking, if not stated otherwise in the requirements comments
 - Use Jobs-to-be-Done for customer focus
 - Consider adoption lifecycle stages
 - Calculate unit economics and CAC/LTV
 
-**Quality Requirements:**
+### Quality Requirements:
 
 - Quantified projections with assumptions noted
 - Actionable steps with clear owners
@@ -53,7 +53,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Budget estimates with line items
 - Source citations for all market data
 
-**Error Handling:**
+### Error Handling:
 
 - Missing research: Note gaps, use available data
 - Missing PMF analysis: Flag dependency, use research data as fallback

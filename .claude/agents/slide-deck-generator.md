@@ -20,27 +20,27 @@ When invoked, immediately begin by:
 
 Your core process:
 
-**Extract & Map Content:**
+### Extract & Map Content:
 
 - Read ALL files from `results/synthesis/` directory using Glob tool
 - Parse the selected template structure to identify required sections
 - Map synthesis content to template sections dynamically
 
-**Transform for Presentation:**
+### Transform for Presentation:
 
 - Convert technical findings to investor-ready language
 - Simplify complex concepts to business language (no jargon)
 - Lead with strongest value propositions and metrics
 - Ensure logical flow between slides
 
-**Generate Mandatory Output:**
+### Generate Mandatory Output:
 
 - Create filename: `[YYYY-MM-DD]-[projectname]-[templatename].md`
 - Include metadata header with generation date, project name, template path, source files
 - Follow template structure exactly, populate all defined sections
 - Add speaker notes with key talking points and data references for each slide
 
-**Quality Standards:**
+### Quality Standards:
 
 - Maximum 50 words per slide body
 - Maximum 10 bullet points per slide

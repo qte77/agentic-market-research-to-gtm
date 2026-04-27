@@ -1,6 +1,8 @@
+# README
+
 <!-- markdownlint-disable MD028 no-blanks-blockquote -->
 <!-- markdownlint-disable MD033 no-inline-html -->
-# AI Startup Market Research Framework
+## AI Startup Market Research Framework
 
 > Stop Guessing. Start Dominating. - Automated market intelligence for AI startups that refuse to fail.
 
@@ -40,7 +42,7 @@ Before running the pipeline, configure your research targets:
 - [>>> company name here <<<](https://company.url)
   - Additional information for this source #1
   - Additional information for this source #N
-```
+```text
 
 **Adding New Alignment Target** (`config/targets.md`):
 
@@ -119,7 +121,7 @@ The framework supports dual-mode execution combining content depth and strategic
 
 **Default Modes**: Concise + Conservative (executive-focused with risk-aware approach)
 
-**Mode Examples:**
+### Mode Examples:
 
 ```sh
 # Main agent orchestration (RECOMMENDED) - Dual mode combinations
@@ -137,7 +139,7 @@ make orchestrated DETAIL_MODE=detailed STRATEGY_MODE=ambitious     # Comprehensi
 # Individual phases with dual modes
 make landscape DETAIL_MODE=detailed STRATEGY_MODE=ambitious
 make research pmf gtm DETAIL_MODE=concise STRATEGY_MODE=conservative
-```
+```bash
 
 **Mode Transmission:** Main agent automatically detects and transmits both content depth and strategic approach modes to all subagents via Task tool prompts. Both modes logged to `results/logs/mode_log.txt`.
 
@@ -163,7 +165,7 @@ ls results/
 - **POSIX Shell** (`sh`, `dash`, `bash` - for dashboard and hooks)
 - **Standard Unix Tools** (`find`, `wc`, `awk`, `date` - widely available)
 
-**Prerequisites for all methods:**
+### Prerequisites for all methods:
 
 - Configuration files setup in `config/`
 - Claude Code CLI installed (`make setup_claude_code`)
@@ -278,7 +280,7 @@ For detailed configuration instructions and examples, see individual files in `c
 │   ├── validation/          # Quality assurance reports and feedback summaries
 │   └── logs/                # Pipeline execution logs and mode tracking
 └── Makefile                 # Legacy pipeline automation (backward compatibility)
-```
+```text
 
 ## Architecture Overview
 

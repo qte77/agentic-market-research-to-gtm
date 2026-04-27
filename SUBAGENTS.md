@@ -1,11 +1,13 @@
+# Subagents
+
 <!-- markdownlint-disable MD034 no-bare-urls -->
-# AI Startup Market Research Sub-Agents - Common Guidelines
+## AI Startup Market Research Sub-Agents - Common Guidelines
 
 This document contains shared guidelines and patterns for all sub-agents in the AI startup market research pipeline.
 
 ## Pipeline Mode Adaptation
 
-**ALL SUBAGENTS MUST ADAPT THEIR OUTPUT BASED ON THE DUAL MODES SPECIFIED IN THEIR INVOCATION PROMPT:**
+### ALL SUBAGENTS MUST ADAPT THEIR OUTPUT BASED ON THE DUAL MODES SPECIFIED IN THEIR INVOCATION PROMPT:
 
 ### Content Depth Modes
 
@@ -84,13 +86,13 @@ For each analysis area, provide:
 
 ## Critical Warning
 
-**FAILURE TO CREATE FILES = TASK FAILURE**  
+### FAILURE TO CREATE FILES = TASK FAILURE
 
 Each sub-agent must produce actual markdown files in their designated results directory. Text-only responses without file creation constitute incomplete task execution.
 
 ## Mandatory Citation Requirements
 
-**ALL CLAIMS MUST INCLUDE PROPER SOURCE DOCUMENTATION:**
+### ALL CLAIMS MUST INCLUDE PROPER SOURCE DOCUMENTATION:
 
 - **Web URLs**: Include full URLs for all online sources (e.g., https://techcrunch.com/2024/article-title)
 - **Book Citations**: Include ISBN, author, title, publication year (e.g., "AI Strategy" by John Smith, ISBN: 978-1234567890, 2024)
@@ -99,7 +101,7 @@ Each sub-agent must produce actual markdown files in their designated results di
 - **Company Data**: Include source type (SEC filing, investor deck, website), date accessed, and URL
 - **Academic Papers**: Include DOI, journal name, publication date, and authors
 
-**Citation Format Examples:**
+### Citation Format Examples:
 
 - Market sizing: "AI market reached $100B in 2024 (Source: Gartner AI Market Report 2024, https://gartner.com/report-link)"
 - Funding data: "Tea raised $5M Series A (Source: Crunchbase, accessed 2024-08-17, https://crunchbase.com/funding-round/...)"

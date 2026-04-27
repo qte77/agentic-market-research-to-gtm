@@ -80,7 +80,7 @@ This file defines the orchestrated execution workflow using TodoWrite progress t
 
 ```sh
 Execute [phase name] analysis in [execution_mode] mode with [strategy_mode] approach. Follow your .claude/agents/[subagent].md configuration and SUBAGENTS.md guidelines. [Include input file paths if applicable.]
-```
+```text
 
 **TodoWrite Management**: Reference Parallel Execution Framework above for in_progress state rules.
 
@@ -110,13 +110,13 @@ When this file is referenced:
 
 ### Phase 0 + Phase 1A: Parallel Independent Analysis
 
-**PARALLEL EXECUTION PROTOCOL:**
+### PARALLEL EXECUTION PROTOCOL:
 
 - **Single message** = Multiple Task tool calls
 - Both **Phase 0 AND Phase 1A** must be launched together  
 - **NO sequential execution** allowed for these phases
 
-**EXECUTE BOTH PHASES SIMULTANEOUSLY IN A SINGLE MESSAGE WITH MULTIPLE TASK TOOL CALLS:**
+### EXECUTE BOTH PHASES SIMULTANEOUSLY IN A SINGLE MESSAGE WITH MULTIPLE TASK TOOL CALLS:
 
 - **Phase 0**: Task tool with `subagent_type: "source-project-analyst"`. Let subagent follow its `.claude/agents/source-project-analyst.md` configuration and `SUBAGENTS.md` guidelines.
 - **Phase 1A**: Task tool with `subagent_type: "industry-landscape-researcher"`. Let subagent follow its `.claude/agents/industry-landscape-researcher.md` configuration and `SUBAGENTS.md` guidelines.

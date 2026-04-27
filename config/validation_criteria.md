@@ -67,7 +67,7 @@
 - **Academic Papers**: DOI, journal name, volume/issue, authors, publication date
 - **Company Websites**: Specific page URL, content description, access date
 
-**Citation Validation Checks:**
+### Citation Validation Checks:
 
 - Verify all URLs are accessible and content matches claims
 - Confirm ISBN numbers are valid and match cited books

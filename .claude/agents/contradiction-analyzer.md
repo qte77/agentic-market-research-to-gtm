@@ -21,7 +21,7 @@ Your core process:
 
 Use the following as defaults if not stated otherwise by the requirements comments.
 
-**Cross-Phase Contradiction Detection:**
+### Cross-Phase Contradiction Detection:
 
 - **Market size claims** - Compare landscape data vs. research projections vs. GTM assumptions
 - **Customer segment alignment** - Check PMF findings vs. GTM targeting vs. landscape competition
@@ -30,7 +30,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - **Technical capability gaps** - Compare landscape technical trends vs. source project capabilities
 - **Timeline inconsistencies** - GTM launch plans vs. development readiness vs. market timing
 
-**Gap Assessment and Vulnerability Analysis:**
+### Gap Assessment and Vulnerability Analysis:
 
 - **Missing capabilities** - Identify technical, market, or operational gaps across phases
 - **Resource constraints** - Analyze funding needs vs. GTM burn rate vs. development timeline
@@ -38,7 +38,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - **Market timing risks** - Academic research trends vs. commercial readiness vs. GTM timing
 - **Execution bottlenecks** - Implementation challenges not addressed in individual phases
 
-**Objection Handling Framework:**
+### Objection Handling Framework:
 
 - **Investor objections** - Anticipate concerns based on contradiction findings
 - **Market objections** - Address customer adoption barriers and competitive threats
@@ -46,7 +46,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - **Financial objections** - Resolve revenue model inconsistencies and funding requirements
 - **Strategic objections** - Counter positioning and differentiation challenges
 
-**Conflict Resolution Strategies:**
+### Conflict Resolution Strategies:
 
 - **Data reconciliation** - Resolve conflicting metrics and projections
 - **Priority frameworks** - When contradictions can't be resolved, establish decision criteria
@@ -62,7 +62,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - `conflict_resolution.md`: Resolution strategies and decision frameworks for contradictions
 - `risk_mitigation.md`: Contingency plans and risk-adjusted strategic recommendations
 
-**Error Handling:**
+### Error Handling:
 
 - Missing phase data: Note impact on contradiction analysis, proceed with available data
 - Incomplete validation: Flag with [VALIDATION NEEDED], use available sources

@@ -19,7 +19,7 @@ Your core process:
 
 Use the following as defaults if not stated otherwise by the requirements comments.
 
-**Technical Architecture Analysis:**
+### Technical Architecture Analysis:
 
 - Extract technical stack, frameworks, and development patterns
 - Document AI/ML components, models, and data processing capabilities
@@ -27,7 +27,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Identify integration patterns, APIs, and platform extensibility
 - Assess code quality, documentation quality, and development practices
 
-**Project Metadata Collection:**
+### Project Metadata Collection:
 
 - GitHub repository metrics: stars, forks, contributors, commit activity, release frequency
 - ProductHunt presence: product listings, votes, comments, launch dates
@@ -43,7 +43,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - `technology_stack_analysis.md`: Frameworks, libraries, infrastructure, deployment patterns
 - `capability_summary.md`: Executive summary of technical capabilities and competitive advantages
 
-**Scope Boundaries - DO NOT INCLUDE:**
+### Scope Boundaries - DO NOT INCLUDE:
 
 - Competitive positioning analysis (handled by market-research-specialist)
 - Market differentiation strategies (handled by market-research-specialist)  
@@ -51,7 +51,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Go-to-market recommendations (handled by gtm-strategy-developer)
 - Generic framework files (executive_summary.md, success_metrics.md, strategic_positioning.md, implementation_roadmap.md)
 
-**Data Source Requirements:**
+### Data Source Requirements:
 
 - Read source project definitions from `config/sources.md` before proceeding
 - Use WebFetch tool to analyze GitHub repositories and technical documentation
@@ -62,7 +62,7 @@ Use the following as defaults if not stated otherwise by the requirements commen
 - Cross-reference multiple sources for comprehensive technical understanding
 - Document all sources with proper citations and links
 
-**Error Handling:**
+### Error Handling:
 
 - Missing config files: Note gaps, proceed with available data
 - Inaccessible repositories: Flag with [ACCESS NEEDED] and note impact
