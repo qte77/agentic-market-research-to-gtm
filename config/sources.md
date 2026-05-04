@@ -1,8 +1,10 @@
 # Project Sources - Companies/Projects to be Aligned
 
-## Primary Project
+## Primary Projects
 
-- [Next.js + Stripe + Supabase Production-Ready Template](https://github.com/supabase-community/supabase-mcp)
+- [UTI-project](/workspaces/lambda/UTI-project)
+- [OralBiome-AMP](/workspaces/lambda/OralBiome-AMP)
+- [so101-biolab-automation](/workspaces/lambda/so101-biolab-automation)
 
 ## Additional Projects
 

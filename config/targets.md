@@ -1,5 +1,12 @@
 # Alignment Targets - Organizations/Markets to Align With
 
+We want to
+
+1. Align the source projects
+2. Find orthogonal or outlier projects which can be of interest
+
+to following targets.
+
 ## Y Combinator
 
 - [RFS (Request for Startups)](https://ycombinator.com/rfs)
