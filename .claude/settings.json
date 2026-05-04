@@ -1,0 +1,138 @@
+{
+  "env": {
+    "ANTHROPIC_MODEL": "opus",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "1",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1"
+  },
+  "outputStyle": "default",
+  "spinnerTipsEnabled": true,
+  "prefersReducedMotion": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash .claude/scripts/statusline.sh"
+  },
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "qte77-claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "qte77/claude-code-plugins"
+      }
+    }
+  },
+  "permissions": {
+    "allow": [
+      "AskUserQuestion",
+      "Bash(date:*)",
+      "Bash(git:add:*)",
+      "Bash(git:diff:*)",
+      "Bash(git:log:*)",
+      "Bash(git:status:*)",
+      "Bash(git:log:--grep:*)",
+      "Bash(git:rev-list:*)",
+      "Bash(jq:*)",
+      "Bash(make:*)",
+      "Bash(tree:*)",
+      "Edit(docs/)",
+      "Edit(tests/)",
+      "Edit(src/**)",
+      "Edit(results/**)",
+      "Write(results/**)",
+      "Read(results/**)",
+      "WebFetch",
+      "WebSearch",
+      "mcp__ide__getDiagnostics",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "Read(.claude/skills/)",
+      "Read(.claude/rules/)",
+      "SlashCommand",
+      "Skill"
+    ],
+    "deny": [
+      "Bash(awk:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(git:push:*)",
+      "Bash(grep:*)",
+      "Bash(head:*)",
+      "Bash(ls:*)",
+      "Bash(source:*)",
+      "Bash(tail:*)",
+      "Bash(touch:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Edit(.env)",
+      "Read(.env)"
+    ],
+    "ask": [
+      "Bash(git clean:*)",
+      "Bash(git:commit:*)",
+      "Bash(git reset:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(rm:*)",
+      "Edit(.claude/**)",
+      "Edit(AGENTS.md)",
+      "Edit(CLAUDE.md)",
+      "Edit(Makefile)",
+      "Edit(pyproject.toml)",
+      "Edit(README.md)",
+      "Write(.claude/**)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f config/sources.md ] && [ -f config/targets.md ] && echo '[ready] config validated' || echo '[warn] missing config/sources.md or config/targets.md'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat 2>/dev/null || echo '{}'); agent=$(echo \"$input\" | jq -r '.tool_input.subagent_type // \"unknown\"'); desc=$(echo \"$input\" | jq -r '.tool_input.description // \"-\"'); [ \"$agent\" = \"unknown\" ] && exit 0; mkdir -p results/logs && echo \"$(date '+%Y-%m-%d %H:%M:%S')|$agent|$desc|START\" >> results/logs/subagent.log"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat 2>/dev/null || echo '{}'); agent=$(echo \"$input\" | jq -r '.tool_input.subagent_type // \"unknown\"'); [ \"$agent\" = \"unknown\" ] && exit 0; duration=$(echo \"$input\" | jq -r '.tool_response.totalDurationMs // 0'); tokens=$(echo \"$input\" | jq -r '.tool_response.totalTokens // 0'); mkdir -p results/logs && echo \"$(date '+%Y-%m-%d %H:%M:%S')|$agent|END|${duration}ms|${tokens}tokens\" >> results/logs/subagent.log; if echo \"$input\" | jq -e '.tool_response.error' >/dev/null 2>&1; then echo \"$(date '+%Y-%m-%d %H:%M:%S')|$agent|ERROR\" >> results/logs/errors.log; fi"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "input=$(cat 2>/dev/null || echo '{}'); prompt=$(echo \"$input\" | jq -r '.prompt // \"\"'); echo \"$prompt\" | grep -qiE 'execute.*(pipeline|AGENTS\\.md)|run.*pipeline|start.*pipeline' || exit 0; mode=concise; echo \"$prompt\" | grep -qi 'detailed' && mode=detailed; strategy=conservative; echo \"$prompt\" | grep -qi 'ambitious' && strategy=ambitious; mkdir -p results/logs && echo \"$(date '+%Y-%m-%d %H:%M:%S')|$mode|$strategy\" >> results/logs/mode_log.txt"
+          }
+        ]
+      }
+    ]
+  },
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": "Generated with Claude <noreply@anthropic.com>"
+  }
+}
