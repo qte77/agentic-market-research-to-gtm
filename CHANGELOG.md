@@ -27,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `.claude/settings.local.json` (personal Claude Code settings) is no longer tracked and is listed in `.gitignore`
+
 ## [2.0.0] - 2025-08-31
 
 ### Added
