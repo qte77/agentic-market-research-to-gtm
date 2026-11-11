@@ -1,0 +1,11 @@
+# URL-level excludes for the `lint / links` (lychee) check, read additively by
+# lychee's own default ignore-file discovery. Each line is a regex matched
+# against the (resolved) link. This repo has no local lychee.toml — the
+# shared qte77/.github workflow fetches its lychee.toml fallback, which this
+# file layers on top of.
+
+# Placeholder example URLs in template/example docs — intentionally fake,
+# never meant to resolve.
+https://github\.com/your_project_here
+https://techcrunch\.com/2024/article-title
+https://gartner\.com/report-link

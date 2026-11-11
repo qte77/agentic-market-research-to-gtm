@@ -63,7 +63,7 @@ The Supabase MCP Server occupies a unique position in the emerging MCP ecosystem
 - Security-first design with granular permission controls
 - Modular architecture supporting selective feature activation
 
-**Market Timing**: The project launches at an optimal inflection point where MCP adoption is accelerating across major AI platforms, with over 1,000 MCP servers created by early 2025 (Source: [MCP Ecosystem Analysis 2024-2025](https://rickxie.cn/blog/MCP/))
+**Market Timing**: The project launches at an optimal inflection point where MCP adoption is accelerating across major AI platforms, with over 1,000 MCP servers created by early 2025 (Source: MCP Ecosystem Analysis 2024-2025, link removed 2026-11; page no longer resolves)
 
 ## Technical Differentiation Factors
 
