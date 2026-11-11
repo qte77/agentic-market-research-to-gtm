@@ -33,6 +33,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   minor/patch version-updates groups (majors stay ungrouped), per the Actions SHA-pinning
   policy rollout
 
+### Fixed
+
+- `lint / links` (lychee) check on `main`: added `.lycheeignore` for placeholder example URLs
+  (`github.com/your_project_here` in `config/sources.example.md`, `techcrunch.com/2024/article-title`
+  and `gartner.com/report-link` in `SUBAGENTS.md`), and removed the dead `rickxie.cn/blog/MCP/` link
+  (4 places in the 2025-08-17 example results) — the page no longer resolves and the site's blog
+  index lists no replacement post, so the citation text was kept without the broken link.
+
 ## [2.0.0] - 2025-08-31
 
 ### Added

@@ -133,8 +133,8 @@
 ### Tier 3 Sources (Analysis/Commentary) ⚠️
 
 17. **Rick Xie MCP Ecosystem Analysis**
-    - URL: https://rickxie.cn/blog/MCP/
-    - Status: ✅ ACCESSIBLE
+    - URL: (link removed 2026-11; page previously at rickxie.cn/blog/MCP no longer resolves)
+    - Status: ✅ ACCESSIBLE at time of this 2025-08 validation
     - Authority: Personal blog/analysis (Lower authority)
     - Publication Date: May 2025 (Future perspective)
     - Quality Rating: FAIR
