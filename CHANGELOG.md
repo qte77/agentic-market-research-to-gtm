@@ -27,6 +27,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `github-actions` ecosystem entry in `.github/dependabot.yml` with security-updates and
+  minor/patch version-updates groups (majors stay ungrouped), per the Actions SHA-pinning
+  policy rollout
+
 ### Fixed
 
 - `lint / links` (lychee) check on `main`: added `.lycheeignore` for placeholder example URLs
