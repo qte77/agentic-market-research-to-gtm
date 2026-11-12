@@ -16,7 +16,7 @@ The AI infrastructure market is experiencing unprecedented growth with **$100+ b
 
 The Model Context Protocol (MCP) has achieved rapid industry adoption with **official support from OpenAI, Microsoft, and Google DeepMind**, while the developer community has created **over 1,000 MCP servers within months** of the protocol's launch. This represents a rare opportunity to establish market leadership during the early standardization phase of a critical AI infrastructure protocol.
 
-**Source**: [Model Context Protocol Ecosystem Analysis](https://rickxie.cn/blog/MCP/)
+**Source**: Model Context Protocol Ecosystem Analysis (link removed 2026-11; page no longer resolves)
 
 ### Investment Thesis Alignment
 

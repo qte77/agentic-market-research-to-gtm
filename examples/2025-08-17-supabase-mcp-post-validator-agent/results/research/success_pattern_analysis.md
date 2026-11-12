@@ -107,7 +107,7 @@ Source: [Y Combinator Growth Analysis 2025](https://www.cnbc.com/2025/03/15/y-co
 - **Platform Integration**: Native support across major AI development tools
 - **Standardization Momentum**: Emerging as universal standard for AI-tool connectivity
 
-Source: [Model Context Protocol Ecosystem Analysis](https://rickxie.cn/blog/MCP/)
+Source: Model Context Protocol Ecosystem Analysis (link removed 2026-11; page no longer resolves)
 
 ## Go-to-Market Success Patterns
 
