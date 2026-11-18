@@ -3,3 +3,8 @@ results/
 
 # Personal Claude Code settings, never shared
 .claude/settings.local.json
+
+# Local pipeline inputs: they may describe private projects, so they are never committed.
+# Create them with: cp config/sources.example.md config/sources.md (same for targets).
+config/sources.md
+config/targets.md

@@ -25,10 +25,12 @@ Analyze AI startup technical capabilities and strategic positioning against targ
 
 Before running the pipeline, configure your research targets:
 
-1. **Edit `config/sources.md`** - Add projects/companies to be analyzed and aligned
-2. **Edit `config/targets.md`** - Add organizations/markets to align with
+1. **Copy `config/sources.example.md` to `config/sources.md` and edit the copy** - Add projects/companies to be analyzed and aligned
+2. **Copy `config/targets.example.md` to `config/targets.md` and edit the copy** - Add organizations/markets to align with
 3. **Edit `config/comments_research.md`** - Add auxiliary comments, e.g., constraints and focus areas for market research
 4. **Edit `config/comments_gtm.md`** - Add auxiliary comments, e.g., specific guidance for go-to-market strategy
+
+`config/sources.md` and `config/targets.md` are git-ignored, because they may describe private projects. Only the `.example.md` templates are tracked.
 
 ### Configuration Examples
 
@@ -260,8 +262,8 @@ For detailed configuration instructions and examples, see individual files in `c
 │   ├── slide-deck-generator.md           # Phase 6: Presentation materials
 │   └── results-validator.md              # Quality assurance and validation (all phases)
 ├── config/                  # Pipeline configuration and research parameters
-│   ├── sources.md           # Projects to be analyzed (Phase 0 input)
-│   ├── targets.md           # Organizations/markets to align with
+│   ├── sources.example.md   # Template for sources.md (Phase 0 input; the copy is git-ignored)
+│   ├── targets.example.md   # Template for targets.md (the copy is git-ignored)
 │   ├── comments_research.md # Research constraints and focus areas
 │   ├── comments_gtm.md      # GTM strategy guidance
 │   └── validation_criteria.md  # Quality standards and validation rules
