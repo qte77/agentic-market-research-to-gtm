@@ -35,8 +35,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `config/sources.md` and `config/targets.md` are no longer tracked and are listed in `.gitignore`,
-  because they may describe private projects. Copy the `.example.md` templates to create them.
+- `config/sources.md`, `config/targets.md`, `config/comments_research.md` and `config/comments_gtm.md`
+  are no longer tracked and are listed in `.gitignore`, because they may describe private projects.
+  Copy the `.example.md` templates to create them.
+- `MEMORY.md` is listed in `.gitignore`
 
 ### Fixed
 

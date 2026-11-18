@@ -5,6 +5,11 @@ results/
 .claude/settings.local.json
 
 # Local pipeline inputs: they may describe private projects, so they are never committed.
-# Create them with: cp config/sources.example.md config/sources.md (same for targets).
+# Create each with: cp config/<name>.example.md config/<name>.md
 config/sources.md
 config/targets.md
+config/comments_research.md
+config/comments_gtm.md
+
+# Agent memory notes, local to one machine
+MEMORY.md
