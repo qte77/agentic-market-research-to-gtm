@@ -33,6 +33,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   minor/patch version-updates groups (majors stay ungrouped), per the Actions SHA-pinning
   policy rollout
 
+### Changed
+
+- `config/sources.md`, `config/targets.md`, `config/comments_research.md` and `config/comments_gtm.md`
+  are no longer tracked and are listed in `.gitignore`, because they may describe private projects.
+  Copy the `.example.md` templates to create them.
+- `MEMORY.md` is listed in `.gitignore`
+
 ### Fixed
 
 - `lint / links` (lychee) check on `main`: added `.lycheeignore` for placeholder example URLs
@@ -41,6 +48,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (4 places in the 2025-08-17 example results) — the page no longer resolves and the site's blog
   index lists no replacement post, so the citation text was kept without the broken link.
 - `.claude/settings.local.json` (personal Claude Code settings) is no longer tracked and is listed in `.gitignore`
+- `lint / markdown`: `.markdownlint-cli2.jsonc` now also carries the estate's shared rules (from `qte77/.github`).
+  Because the file exists, the shared workflow skipped its fallback config and linted with every default rule
+  (316 issues, mostly MD013 line length); with the shared rules it reports 0.
 
 ## [2.0.0] - 2025-08-31
 

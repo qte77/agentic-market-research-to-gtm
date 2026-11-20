@@ -1,5 +1,7 @@
 # Alignment Targets - Organizations/Markets to Align With
 
+<!-- Template. Copy to config/targets.md and edit the copy: it is git-ignored, so private details stay local. Never put real target data in this file. -->
+
 ## Primary Targets
 
 - [Accelerator Program](https://accelerator.com)

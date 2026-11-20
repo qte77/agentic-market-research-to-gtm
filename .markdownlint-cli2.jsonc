@@ -1,3 +1,23 @@
+// markdownlint-cli2 options and rules in one file.
+//
+// The shared lint-md-links workflow (qte77/.github) only falls back to the
+// estate's shared rule set when a repo has NO markdownlint config. This file
+// exists (for "ignores"), so the rules must live here as well, or every
+// markdownlint default applies. They match qte77/.github/.markdownlint.jsonc.
 {
+  "config": {
+    // Docs wrap by sentence, not at 80 columns
+    "MD013": false,
+    // Inline HTML is used for images and <details>
+    "MD033": false,
+    // CHANGELOG repeats Added/Changed/Fixed under each version
+    "MD024": { "siblings_only": true },
+    // A frontmatter `title:` counts as the first heading
+    "MD041": { "front_matter_title": "^\\s*title\\s*[:=]" },
+    // Padded table pipes
+    "MD060": { "style": "padded" },
+    // A frontmatter `title:` plus a matching `# H1` is not two top-level headings
+    "MD025": { "front_matter_title": "" }
+  },
   "ignores": ["examples/**"]
 }
