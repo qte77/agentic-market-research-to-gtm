@@ -35,6 +35,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Claude Code `.claude/settings.json` sets `BASH_MAX_OUTPUT_LENGTH` to `15000` and
+  `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` to `50` ([docs](https://code.claude.com/docs/en/env-vars))
 - `config/sources.md`, `config/targets.md`, `config/comments_research.md` and `config/comments_gtm.md`
   are no longer tracked and are listed in `.gitignore`, because they may describe private projects.
   Copy the `.example.md` templates to create them.
